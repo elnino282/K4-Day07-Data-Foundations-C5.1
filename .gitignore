@@ -1,19 +1,59 @@
-# Python
+# Python & Byte-code
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.so
 .pytest_cache/
+.coverage
+htmlcov/
+.tox/
+build/
+dist/
+*.egg-info/
 
-# Environment
+# Environments & Virtual Envs
+.venv/
+venv/
+env/
+ENV/
 .env
 .env.local
+!.env.example
 
-# OS
-.DS_Store
+# AI / ML Models & Caches (Hugging Face / SentenceTransformers)
+.hf-cache/
+.sentence-transformers/
+.cache/
+huggingface/
 
-# IDE
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Vector Stores & Databases
+*.db
+*.sqlite
+*.sqlite3
+chroma_db/
+.chromadb/
+
+# IDEs & Editors
 .vscode/
 .idea/
 .omx/
-.venv/
+.gemini/
+*.swp
+*.swo
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Logs & Temporary Files
+*.log
+*.tmp
+
+# Project specific
 src_w_solution/
+
