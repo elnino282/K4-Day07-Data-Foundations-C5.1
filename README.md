@@ -1,5 +1,13 @@
 # K4 — Ngày 7: Nền Tảng Dữ Liệu, Embedding & Vector Store
 
+## Thông tin nhóm
+- Nhóm: C5.1 (K4)
+- Thành viên:
+  - Hoàng Văn Huy — 2A202601356
+  - Hồ Ngọc Quỳnh — 2A202501684
+  - Nguyễn Đình Liên Thành — 2A202601790
+- Ngày: 03/08/2026
+
 > Bản K4 của Lab 07. Hướng dẫn Codelabs được phát riêng trên lớp/LMS (không kèm trong repo); yêu cầu Giai đoạn 2 riêng xem [K4_VARIANT.md](K4_VARIANT.md).
 
 ---
