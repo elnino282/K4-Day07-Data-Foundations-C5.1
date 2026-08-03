@@ -1,37 +1,14 @@
-from .agent import KnowledgeBaseAgent
-from .chunking import (
-    ChunkingStrategyComparator,
-    FixedSizeChunker,
-    RecursiveChunker,
-    SentenceChunker,
-    compute_similarity,
-)
-from .embeddings import (
-    EMBEDDING_PROVIDER_ENV,
-    LOCAL_EMBEDDING_MODEL,
-    OPENAI_EMBEDDING_MODEL,
-    LocalEmbedder,
-    MockEmbedder,
-    OpenAIEmbedder,
-    _mock_embed,
-)
-from .models import Document
-from .store import EmbeddingStore
+import sys
+from importlib import import_module
 
-__all__ = [
-    "Document",
-    "FixedSizeChunker",
-    "SentenceChunker",
-    "RecursiveChunker",
-    "ChunkingStrategyComparator",
-    "compute_similarity",
-    "EmbeddingStore",
-    "KnowledgeBaseAgent",
-    "MockEmbedder",
-    "LocalEmbedder",
-    "OpenAIEmbedder",
-    "_mock_embed",
-    "LOCAL_EMBEDDING_MODEL",
-    "OPENAI_EMBEDDING_MODEL",
-    "EMBEDDING_PROVIDER_ENV",
-]
+_student_package = import_module("src.2A202601356_HoangVanHuy")
+
+for _module_name in ("agent", "chunking", "embeddings", "models", "store"):
+    sys.modules[f"{__name__}.{_module_name}"] = import_module(
+        f"src.2A202601356_HoangVanHuy.{_module_name}"
+    )
+
+for _name in getattr(_student_package, "__all__", []):
+    globals()[_name] = getattr(_student_package, _name)
+
+__all__ = list(getattr(_student_package, "__all__", []))
