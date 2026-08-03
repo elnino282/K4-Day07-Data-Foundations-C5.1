@@ -1,3 +1,9 @@
 doc_id,file_path,title,source_url,retrieved_at,document_version,license_or_permission
-k4-returns-policy,data/k4_ecommerce/returns-policy.md,Chính sách đổi trả,https://example.com/chinh-sach/doi-tra,2026-08-02,2026.1,example-template-replace-me
-k4-seller-listing,data/k4_ecommerce/seller-listing.md,Quy định đăng bán,https://example.com/nguoi-ban/dang-ban,2026-08-02,2026.1,example-template-replace-me
+shopee-buyer-payment-methods,data\k4_ecommerce\shopee-buyer-payment-methods.md,Các phương thức thanh toán hiện có trên Shopee,https://help.shopee.vn/portal/4/article/79198,2026-08-03,not-stated,public-source
+shopee-buyer-refund-timeline,data\k4_ecommerce\shopee-buyer-refund-timeline.md,Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn,https://help.shopee.vn/portal/4/article/189473,2026-08-03,not-stated,public-source
+shopee-buyer-return-refund-policy,data\k4_ecommerce\shopee-buyer-return-refund-policy.md,Chính sách Trả hàng và Hoàn tiền Shopee,https://help.shopee.vn/portal/4/article/77251,2026-08-03,not-stated,public-source
+shopee-privacy-policy-vn,data\k4_ecommerce\shopee-privacy-policy-vn.md,Chính sách Bảo mật Shopee Việt Nam,https://help.shopee.vn/portal/4/article/77244,2026-08-03,6/4/2026,public-source
+shopee-seller-listing-rules,data\k4_ecommerce\shopee-seller-listing-rules.md,Quy định về đăng bán sản phẩm trên Shopee,https://help.shopee.vn/portal/4/article/77246,2026-08-03,not-stated,public-source
+shopee-seller-prohibited-restricted-products,data\k4_ecommerce\shopee-seller-prohibited-restricted-products.md,Chính sách Cấm/Hạn chế Sản phẩm,https://help.shopee.vn/portal/4/article/77247,2026-08-03,not-stated,public-source
+shopee-seller-shipping-fulfillment-policy,data\k4_ecommerce\shopee-seller-shipping-fulfillment-policy.md,Chính sách Vận chuyển Shopee,https://help.shopee.vn/portal/4/article/77250,2026-08-03,not-stated,public-source
+shopee-terms-of-service-vn,data\k4_ecommerce\shopee-terms-of-service-vn.md,Điều khoản Dịch vụ Shopee,https://help.shopee.vn/portal/4/article/77243,2026-08-03,not-stated,public-source
