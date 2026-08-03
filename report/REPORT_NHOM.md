@@ -97,13 +97,13 @@ Chạy `ChunkingStrategyComparator().compare()` trên 2-3 tài liệu:
 
 > **Đúng 5 câu hỏi**, đa dạng, có thể kiểm chứng; **ít nhất 1 câu** cần lọc metadata mới trả lời tốt. Đây là bộ câu hỏi chung cho mọi thành viên chạy.
 
-| # | Câu hỏi (Query) | Câu trả lời chuẩn (Gold Answer) | Chunk nào chứa thông tin? |
-|---|-------|-------------------------------|--------------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| # | Câu hỏi (Query) | Metadata filter | Câu trả lời chuẩn (Gold Answer) | Chunk/nguồn chứa thông tin |
+|---|-----------------|-----------------|--------------------------------|-----------------------------|
+| 1 | Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh? | `{"customer_role": "buyer"}` | Hàng thông thường là 15 ngày kể từ khi đơn hàng được cập nhật giao hàng thành công; thực phẩm tươi sống hoặc đông lạnh là 24 giờ. Sau thời hạn này, Shopee vẫn có thể xem xét hỗ trợ trong phạm vi phù hợp với chính sách. | `shopee-buyer-return-refund-policy.md`, Điều 3.2 |
+| 2 | Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu? | `{"customer_role": "buyer"}` | Tiền được hoàn về đúng tài khoản thẻ tín dụng hoặc thẻ ghi nợ đã dùng để thanh toán đơn hàng trong vòng 7–14 ngày làm việc, tùy theo ngân hàng. | `shopee-buyer-refund-timeline.md`, bảng thời gian hoàn tiền và phần lưu ý |
+| 3 | Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào? | `{"customer_role": "seller"}` | Hình ảnh phải rõ và thể hiện chi tiết tình trạng sản phẩm, không chứa thông tin không liên quan. Phải có ít nhất một ảnh thật do người bán tự chụp, trong đó sản phẩm chiếm ít nhất 40% diện tích toàn ảnh; ngôn ngữ trên phông nền phải là tiếng Việt. | `shopee-seller-listing-rules.md`, mục Hình ảnh sản phẩm |
+| 4 | Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích? | `{"customer_role": "seller"}` | Trừ khi Shopee có yêu cầu khác, bằng chứng phải được cung cấp trong vòng 24 giờ kể từ khi gửi khiếu nại hoặc nhận yêu cầu từ Shopee. Video quá trình đóng gói được khuyến khích là bằng chứng mạnh; vận đơn hoặc hóa đơn vận chuyển là bằng chứng vững chắc chứng minh người bán đã giao hàng. | `shopee-seller-shipping-fulfillment-policy.md`, mục Bằng chứng khiếu nại |
+| 5 | Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận? | `{"customer_role": "both"}` | Shopee ban đầu chuyển tiền từ Tài khoản Đảm bảo Shopee sang Số dư tài khoản Shopee của người bán. Nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc và yêu cầu sau đó được chấp thuận, Shopee có quyền điều chỉnh khoản tiền thanh toán để hoàn tiền cho người mua. | `shopee-terms-of-service-vn.md`, Điều 11.2(a) |
 
 ### Tổng hợp chất lượng truy xuất của nhóm
 
