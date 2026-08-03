@@ -1,0 +1,1207 @@
+{
+  "embedding_backend": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "corpus": "data\\k4_ecommerce",
+  "similarity": [
+    {
+      "pair": 1,
+      "a": "Người mua muốn trả hàng và nhận lại tiền.",
+      "b": "Khách hàng yêu cầu hoàn tiền cho đơn hàng.",
+      "prediction": "cao",
+      "score": 0.6677
+    },
+    {
+      "pair": 2,
+      "a": "Tiền hoàn được chuyển về thẻ đã thanh toán.",
+      "b": "Khoản hoàn trả được gửi lại vào thẻ ngân hàng ban đầu.",
+      "prediction": "cao",
+      "score": 0.8292
+    },
+    {
+      "pair": 3,
+      "a": "Người bán cần đăng ảnh thật của sản phẩm.",
+      "b": "Người bán phải cung cấp bằng chứng vận chuyển.",
+      "prediction": "thấp",
+      "score": 0.5824
+    },
+    {
+      "pair": 4,
+      "a": "Shopee chuyển tiền thanh toán cho người bán.",
+      "b": "Hôm nay thời tiết có mưa không?",
+      "prediction": "thấp",
+      "score": -0.0471
+    },
+    {
+      "pair": 5,
+      "a": "Người bán phải gửi bằng chứng khiếu nại trong 24 giờ.",
+      "b": "Bằng chứng vận chuyển cần được cung cấp trong vòng một ngày.",
+      "prediction": "cao",
+      "score": 0.4126
+    }
+  ],
+  "strategies": {
+    "baseline": {
+      "description": "RecursiveChunker(800) + exact role filter + dense retrieval",
+      "chunk_count": 360,
+      "source_hit_at_3": "4/5",
+      "evidence_hit_at_3": "2/5",
+      "retrieval": [
+        {
+          "id": 1,
+          "query": "Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-return-refund-policy",
+          "evidence_terms": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.8443,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_5",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 5,
+              "content_preview": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây. 3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiề",
+              "content": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây.\n\n3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "dense_score": 0.8443,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6477,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_21",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 21,
+              "content_preview": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận. 8.2. Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm: Theo hình thức “Lấy hàng hoàn trả tại nhà” hoặc “Gửi trả hàng tại bưu cục”: Người Mua k",
+              "content": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận.\n\n8.2.  Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:\n\nTheo hình thức “Lấy hàng hoàn trả tại nhà” hoặc “Gửi trả hàng tại bưu cục”: Người Mua không phải thanh toán bất cứ chi phí vận chuyển nào cho việc trả hàng.",
+              "dense_score": 0.6477,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6347,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_24",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 24,
+              "content_preview": "Để biết thêm thông tin về thời hạn phản hồi của Người Bán, vui lòng nhấn vào ĐÂY. Để biết thêm thông tin về việc hoàn tiền không cần trả Sản Phẩm, vui lòng nhấn vào ĐÂY.",
+              "content": "Để biết thêm thông tin về thời hạn phản hồi của Người Bán, vui lòng nhấn vào ĐÂY.\n\nĐể biết thêm thông tin về việc hoàn tiền không cần trả Sản Phẩm, vui lòng nhấn vào ĐÂY.",
+              "dense_score": 0.6347,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-refund-timeline",
+          "evidence_terms": [
+            "thẻ tín dụng/ghi nợ",
+            "7 - 14 ngày làm việc"
+          ],
+          "expected_rank": 2,
+          "source_hit_at_3": true,
+          "evidence_found": [],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.6209,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_25",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 25,
+              "content_preview": "9.4. Tùy từng trường hợp, tiền hoàn trả sẽ được chuyển vào Ví ShopeePay, SPayLater, Thẻ nội địa Napas, Tài Khoản Ngân Hàng, Thẻ thẻ tín dụng/ ghi nợ của Người Mua đã đăng ký với Shopee hoặc Số Dư Tài Khoản Shopee của Người Mua. Để biết thêm chi tiết về thời gian hoàn tiền, vui lòng tham khảo hướng dẫn tại ĐÂY. Để làm rõ, Người Mua phải đảm bảo duy trì các phương thức nhận hoàn tiền hợp lệ theo quy định tại Chính Sách này và các chính sách khác của Shopee vào từng thời điểm cụ thể. Shopee sẽ không chịu bất kỳ trách nhiệm nào có liên quan đến hoặc phát sinh từ việc Người Mua không tuân",
+              "content": "9.4.  Tùy từng trường hợp, tiền hoàn trả sẽ được chuyển vào Ví ShopeePay, SPayLater, Thẻ nội địa Napas, Tài Khoản Ngân Hàng, Thẻ thẻ tín dụng/ ghi nợ của Người Mua đã đăng ký với Shopee hoặc Số Dư Tài Khoản Shopee của Người Mua. Để biết thêm chi tiết về thời gian hoàn tiền, vui lòng tham khảo hướng dẫn tại ĐÂY. Để làm rõ, Người Mua phải đảm bảo duy trì các phương thức nhận hoàn tiền hợp lệ theo quy định tại Chính Sách này và các chính sách khác của Shopee vào từng thời điểm cụ thể. Shopee sẽ không chịu bất kỳ trách nhiệm nào có liên quan đến hoặc phát sinh từ việc Người Mua không tuân thủ các quy định liên quan dẫn đến việc chậm trễ hoặc không thể nhận tiền hoàn từ Shopee đối với Sản Phẩm Hoàn Trả.",
+              "dense_score": 0.6209,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6192,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_4",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 4,
+              "content_preview": "Đối với các hình thức hoàn tiền về Ví Shopee Pay, tại thời điểm xử lý hoàn tiền, ví cần ở trạng thái bình thường và còn liên kết với tài khoản Shopee để việc hoàn tiền thành công trong 24h. Đối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví Sh",
+              "content": "Đối với các hình thức hoàn tiền về Ví Shopee Pay, tại thời điểm xử lý hoàn tiền, ví cần ở trạng thái bình thường và còn liên kết với tài khoản Shopee để việc hoàn tiền thành công trong 24h. \n\nĐối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví ShopeePay của bạn để được nhận tiền hoàn.\n\nĐối với các đơn hàng thanh toán bằng SPayLater kết hợp với các phương thức thanh toán khác:",
+              "dense_score": 0.6192,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6185,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_5",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 5,
+              "content_preview": "Số tiền đã thanh toán bằng SPayLater: hoàn về Số dư khả dụng SPayLater trong 24 giờ hoặc Hóa đơn SPayLater trong 3 - 5 ngày làm việc tiếp theo (chi tiết xem tại Bảng bên trên) Số tiền thanh toán bằng phương thức thanh toán khác: hoàn về Ví ShopeePay (nếu trước đó bạn chon thanh toán bằng Ví ShopeePay) hoặc Số dư TK Shopee (nếu trước đó bạn chọn thanh toán bằng Thanh toán QR/Ứng dụng ngân hàng) trong 24 giờ tiếp theo. Bạn có hài lòng với bài viết này? Hài lòng Không hài lòng",
+              "content": "Số tiền đã thanh toán bằng SPayLater: hoàn về Số dư khả dụng SPayLater trong 24 giờ hoặc Hóa đơn SPayLater trong 3 - 5 ngày làm việc tiếp theo (chi tiết xem tại Bảng bên trên)\n\nSố tiền thanh toán bằng phương thức thanh toán khác: hoàn về Ví ShopeePay (nếu trước đó bạn chon thanh toán bằng Ví ShopeePay) hoặc Số dư TK Shopee (nếu trước đó bạn chọn thanh toán bằng Thanh toán QR/Ứng dụng ngân hàng) trong 24 giờ tiếp theo.\n\nBạn có hài lòng với bài viết này?\n\nHài lòng\n\nKhông hài lòng",
+              "dense_score": 0.6185,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-listing-rules",
+          "evidence_terms": [
+            "40% diện tích toàn ảnh",
+            "phông nền hình ảnh là tiếng Việt"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.726,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_13",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 13,
+              "content_preview": "iii. Đối với các sản phẩm trưng bày, giới thiệu trên Shopee là các sản phẩm trên 15 độ cồn cần đáp ứng các quy định dưới đây: + Về nhãn hàng hóa theo quy định của Nghị định 43/2017/NĐ-CP về nhãn hàng hóa (mục 7 Phụ lục I); + Mô tả sản phẩm dưới dạng tài liệu về hàng hóa, dịch vụ để giới thiệu với khách hàng trong hoạt động trưng bày, giới thiệu hàng hóa, dịch vụ theo quy định tại Điều 117, Điều 120, Điều 121) Luật Thương mại 2005; + Phù hợp với quy định về cung cấp thông tin hàng hóa, dịch vụ tại Nghị định số 52/2013/NĐ-CP ngày 16 tháng 5 năm 2013 của Chính phủ về thương mại điện tử; + Việc đă",
+              "content": "iii. Đối với các sản phẩm trưng bày, giới thiệu trên Shopee là các sản phẩm trên 15 độ cồn cần đáp ứng các quy định dưới đây:\n\n+ Về nhãn hàng hóa theo quy định của Nghị định 43/2017/NĐ-CP về nhãn hàng hóa (mục 7 Phụ lục I);\n\n+ Mô tả sản phẩm dưới dạng tài liệu về hàng hóa, dịch vụ để giới thiệu với khách hàng trong hoạt động trưng bày, giới thiệu hàng hóa, dịch vụ theo quy định tại Điều 117, Điều 120, Điều 121) Luật Thương mại 2005;\n\n+ Phù hợp với quy định về cung cấp thông tin hàng hóa, dịch vụ tại Nghị định số 52/2013/NĐ-CP ngày 16 tháng 5 năm 2013 của Chính phủ về thương mại điện tử;\n\n+ Việc đăng bán phải phù hợp với quy định về giảm tính dễ tiếp cận của rượu, bia tại Luật Phòng, chống tác hại của rượu, bia.",
+              "dense_score": 0.726,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6664,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_25",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 25,
+              "content_preview": "Tham khảo Cách tính phí vận chuyển Shopee cho Người bán tại đây. 8. Chất lượng sản phẩm Người Bán cần đảm bảo chất lượng sản phẩm phải đúng như mô tả. Sản phẩm đăng bán trên Sàn Shopee cần có chất lượng tốt theo các tiêu chuẩn hiện hành, phản ánh đúng kỳ vọng Người mua. Trong trường hợp Người bán bị nhiều Người mua tố cáo, đánh giá tiêu cực về chất lượng sản phẩm, Shopee có quyền áp dụng các biện pháp phù hợp lên sản phẩm/tài khoản của Người Bán. Tham khảo quy định về chất lượng sản phẩm tại đây. D. QUY ĐỊNH VỀ HẠN SỬ DỤNG CỦA SẢN PHẨM 1. Danh sách các sản phẩm bắt buộc phải có hạn sử dụng trê",
+              "content": "Tham khảo Cách tính phí vận chuyển Shopee cho Người bán tại đây.\n\n \n\n8. Chất lượng sản phẩm\n\nNgười Bán cần đảm bảo chất lượng sản phẩm phải đúng như mô tả. Sản phẩm đăng bán trên Sàn Shopee cần có chất lượng tốt theo các tiêu chuẩn hiện hành, phản ánh đúng kỳ vọng Người mua. Trong trường hợp Người bán bị nhiều Người mua tố cáo, đánh giá tiêu cực về chất lượng sản phẩm, Shopee có quyền áp dụng các biện pháp phù hợp lên sản phẩm/tài khoản của Người Bán.\n\nTham khảo quy định về chất lượng sản phẩm tại đây.\n\n \n\nD. QUY ĐỊNH VỀ HẠN SỬ DỤNG CỦA SẢN PHẨM\n\n1. Danh sách các sản phẩm bắt buộc phải có hạn sử dụng trên bao bì\n\na. Dược phẩm\n\nb. Hóa chất tẩy rửa, vệ sinh\n\nc. Mỹ phẩm\n\nd. Nước hoa\n\ne. Tã, băng vệ sinh\n\nf. Thực phẩm\n\ng. Thực phẩm chức năng;",
+              "dense_score": 0.6664,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6555,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_0",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 0,
+              "content_preview": "# Quy định về đăng bán sản phẩm trên Shopee QUY ĐỊNH VỀ ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE | Shopee Trung tâm trợ giúp Xin chào, Shopee có thể giúp gì cho bạn? QUY ĐỊNH VỀ ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE A. PHẠM VI VÀ ĐỐI TƯỢNG ÁP DỤNG 1. Đối tượng áp dụng Quy định này áp dụng đối với tất cả Người Bán trên Sàn TMĐT Shopee (“Sàn Shopee”) 2. Phạm vi áp dụng Quy định này quy định về việc đăng bán các sản phẩm trên Sàn Shopee. B. QUY ĐỊNH CHUNG: 1. Nguyên tắc chung a. Đăng bán sản phẩm trên Shopee là hoạt động của Người Bán dùng hàng hóa, dịch vụ và tài liệu về hàng hóa, dịch vụ để giới thiệu với khách h",
+              "content": "# Quy định về đăng bán sản phẩm trên Shopee\n\nQUY ĐỊNH VỀ ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE | Shopee Trung tâm trợ giúp\n\nXin chào, Shopee có thể giúp gì cho bạn?\n\nQUY ĐỊNH VỀ ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE\n\nA. PHẠM VI VÀ ĐỐI TƯỢNG ÁP DỤNG\n\n1. Đối tượng áp dụng\n\nQuy định này áp dụng đối với tất cả Người Bán trên Sàn TMĐT Shopee (“Sàn Shopee”)\n\n \n\n2. Phạm vi áp dụng\n\nQuy định này quy định về việc đăng bán các sản phẩm trên Sàn Shopee.\n\n \n\nB. QUY ĐỊNH CHUNG:\n\n1. Nguyên tắc chung\n\na. Đăng bán sản phẩm trên Shopee là hoạt động của Người Bán dùng hàng hóa, dịch vụ và tài liệu về hàng hóa, dịch vụ để giới thiệu với khách hàng về hàng hóa, dịch vụ đó.",
+              "dense_score": 0.6555,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "evidence_terms": [
+            "video quá trình đóng gói",
+            "trong vòng 24 giờ"
+          ],
+          "expected_rank": null,
+          "source_hit_at_3": false,
+          "evidence_found": [],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.6677,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_29",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 29,
+              "content_preview": "Người Bán vi phạm một trong các quy định trên trong quá trình đăng bán sản phẩm, tùy theo mức độ vi phạm, Shopee sẽ tiến hành một số biện pháp xử lý phù hợp bao gồm nhưng không giới hạn (i) xóa/khóa/tạm ẩn hiển thị sản phẩm; (ii) giới hạn/khóa tài khoản; (iii) yêu cầu Người bán đền bù thiệt hại cho Người mua hàng/Người sử dụng hàng hóa, dịch vụ; (iv) cấn trừ tiền từ Số dư Tài Khoản Shopee, (v) khóa tính năng rút tiền từ Số dư Tài Khoản Shopee, (vi) cung cấp thông tin cho cơ quan nhà nước có thẩm quyền, Người Mua/Người sử dụng hàng hóa, dịch vụ; (vii) khởi kiện tại Tòa án để đảm bảo bảo vệ cá",
+              "content": "Người Bán vi phạm một trong các quy định trên trong quá trình đăng bán sản phẩm, tùy theo mức độ vi phạm, Shopee sẽ tiến hành một số biện pháp xử lý phù hợp bao gồm nhưng không giới hạn (i) xóa/khóa/tạm ẩn hiển thị sản phẩm; (ii) giới hạn/khóa tài khoản; (iii) yêu cầu Người bán đền bù thiệt hại cho Người mua hàng/Người sử dụng hàng hóa, dịch vụ; (iv) cấn trừ tiền từ Số dư Tài Khoản Shopee, (v) khóa tính năng rút tiền từ Số dư Tài Khoản Shopee, (vi) cung cấp thông tin cho cơ quan nhà nước có thẩm quyền, Người Mua/Người sử dụng hàng hóa, dịch vụ; (vii) khởi kiện tại Tòa án để đảm bảo bảo vệ các quyền và lợi ích hợp pháp của Shopee và các bên có liên quan, v.v...hoặc các biện pháp khác theo chính sách có hiệu lực tại thời điểm diễn ra hành vi vi phạm trên Sàn Shopee.",
+              "dense_score": 0.6677,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6631,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_24",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 24,
+              "content_preview": "e. Giá sản phẩm không được thấp hoặc cao hơn một cách bất hợp lý so với mặt bằng giá của sản phẩm cùng loại trên Sàn Shopee. Người bán lưu ý việc để giá bán bất hợp lý có thể bị coi là hành vi gian lận trong một số trường hợp và sẽ bị Shopee xử lý theo chính sách xử lý hành vi gian lận của Shopee. 7. Phí vận chuyển a. Người Bán phải xác định chính xác khối lượng sản phẩm cần vận chuyển để ước lượng chi phí vận chuyển. b. Khối lượng sản phẩm đăng ký phải là khối lượng sau khi đóng gói của hàng hóa để chuyển đi. Người Bán chịu trách nhiệm về tính chính xác đối với khối lượng sản phẩm đăng ký này",
+              "content": "e. Giá sản phẩm không được thấp hoặc cao hơn một cách bất hợp lý so với mặt bằng giá của sản phẩm cùng loại trên Sàn Shopee. Người bán lưu ý việc để giá bán bất hợp lý có thể bị coi là hành vi gian lận trong một số trường hợp và sẽ bị Shopee xử lý theo chính sách xử lý hành vi gian lận của Shopee.\n\n \n\n7. Phí vận chuyển\n\na. Người Bán phải xác định chính xác khối lượng sản phẩm cần vận chuyển để ước lượng chi phí vận chuyển.\n\nb. Khối lượng sản phẩm đăng ký phải là khối lượng sau khi đóng gói của hàng hóa để chuyển đi. Người Bán chịu trách nhiệm về tính chính xác đối với khối lượng sản phẩm đăng ký này.\n\nc. Với các sản phẩm cồng kềnh, Người Bán nên tham khảo thêm Chính sách vận chuyển để biết chi tiết cách thức xác định khối lượng sản phẩm.",
+              "dense_score": 0.6631,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6608,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_1",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 1,
+              "content_preview": "b. Khi đăng bán sản phẩm trên Shopee, Người Bán có trách nhiệm tuân thủ các quy định tại Điều 117, Điều 120.4, Điều 121 của Luật Thương Mại và các văn bản quy phạm pháp luật có liên quan đến hoạt động trưng bày, giới thiệu hàng hóa, dịch vụ. Đối với Người Bán là pháp nhân có vốn đầu tư nước ngoài, Người Bán cần có Giấy phép kinh doanh phù hợp với quy định của pháp luật hiện hành. c. Tất cả chứng từ mà Người Bán được yêu cầu cung cấp thì Người Bán phải đảm bảo và cam kết tất cả các chứng từ mà Người Bán cung cấp cho Shopee đều được scan từ chứng từ gốc, không được làm giả, chỉnh sửa, tẩy xóa. 2",
+              "content": "b. Khi đăng bán sản phẩm trên Shopee, Người Bán có trách nhiệm tuân thủ các quy định tại Điều 117, Điều 120.4, Điều 121 của Luật Thương Mại và các văn bản quy phạm pháp luật có liên quan đến hoạt động trưng bày, giới thiệu hàng hóa, dịch vụ. Đối với Người Bán là pháp nhân có vốn đầu tư nước ngoài, Người Bán cần có Giấy phép kinh doanh phù hợp với quy định của pháp luật hiện hành.\n\nc. Tất cả chứng từ mà Người Bán được yêu cầu cung cấp thì Người Bán phải đảm bảo và cam kết tất cả các chứng từ mà Người Bán cung cấp cho Shopee đều được scan từ chứng từ gốc, không được làm giả, chỉnh sửa, tẩy xóa.\n\n \n\n2. Các nội dung không được phép đăng bán\n\nNgười Bán được quyền đăng các sản phẩm lên Shopee nhằm mục đích kinh doanh. Tuy nhiên, NGHIÊM CẤM đăng tải những sản phẩm có nội dung sau đây:",
+              "dense_score": 0.6608,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận?",
+          "metadata_filter": {
+            "customer_role": "both"
+          },
+          "expected_doc_id": "shopee-terms-of-service-vn",
+          "evidence_terms": [
+            "đã nhận được hàng",
+            "điều chỉnh khoản"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "đã nhận được hàng",
+            "điều chỉnh khoản"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.7958,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_70",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 70,
+              "content_preview": "i. Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua ngay sau khi Người Mua xác nhận “Đã nhận được hàng” trên Trang Shopee; ii. Không ảnh hưởng đến Điểm b (i) nêu trên, trong trường hợp Shopee nhận thấy cần thêm thời gian để xem xét, kiểm tra đơn hàng, Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua sau khi hết Thời Gian Shopee Đảm Bảo. c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”: i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền",
+              "content": "i. Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua ngay sau khi Người Mua xác nhận “Đã nhận được hàng” trên Trang Shopee;\n\nii. Không ảnh hưởng đến Điểm b (i) nêu trên, trong trường hợp Shopee nhận thấy cần thêm thời gian để xem xét, kiểm tra đơn hàng, Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua sau khi hết Thời Gian Shopee Đảm Bảo.\n\nc) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”:\n\ni. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+              "dense_score": 0.7958,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.793,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_71",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 71,
+              "content_preview": "ii. Đối với đơn hàng phát sinh trả hàng/hoàn tiền sau khi Shopee đã thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và được Shopee đồng ý hoàn tiền cho Người Mua: Shopee sẽ điều chỉnh khoản Khoản Tiền Thanh Toán từ Người Mua cho Người Bán để hoàn lại cho Người Mua ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee hoàn tất xử lý theo Chính Sách Shopee. 10.4. Sau khi đã gửi Yêu Cầu Thanh Toán, bạn không thể thay đổi hoặc hủy bỏ yêu cầu này.",
+              "content": "ii. Đối với  đơn hàng phát sinh trả hàng/hoàn tiền sau khi Shopee đã thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và được Shopee đồng ý hoàn tiền cho Người Mua: Shopee sẽ điều chỉnh khoản Khoản Tiền Thanh Toán từ Người Mua cho Người Bán để hoàn lại cho Người Mua ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee hoàn tất xử lý theo Chính Sách Shopee.\n\n10.4. Sau khi đã gửi Yêu Cầu Thanh Toán, bạn không thể thay đổi hoặc hủy bỏ yêu cầu này.",
+              "dense_score": 0.793,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.7737,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_66",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 66,
+              "content_preview": "9.13. Hiện tại, Shopee có thể thực hiện thanh toán cho Người Sử Dụng qua chuyển khoản ngân hàng. Do vậy, Người Sử Dụng cần cung cấp cho Shopee thông tin tài khoản ngân hàng để nhận thanh toán, nghĩa là thanh toán cho đơn hàng đã bán hoặc đơn hàng trả hàng/hoàn tiền theo Chính Sách Shopee. 10. SỐ DƯ TÀI KHOẢN SHOPEE 10.1. Số Dư Tài Khoản Shopee là một tính năng do Shopee hoặc nhà cung cấp dịch vụ được phép của Shopee cung cấp để hỗ trợ việc ghi nhận tiền bán hàng hoặc giá trị tiền được hoàn trả cho các giao dịch trả hàng/hoàn tiền. Tổng giá trị ghi nhận này, trừ đi các khoản đã được thanh toán,",
+              "content": "9.13. Hiện tại, Shopee có thể thực hiện thanh toán cho Người Sử Dụng qua chuyển khoản ngân hàng. Do vậy, Người Sử Dụng cần cung cấp cho Shopee thông tin tài khoản ngân hàng để nhận thanh toán, nghĩa là thanh toán cho đơn hàng đã bán hoặc đơn hàng trả hàng/hoàn tiền theo Chính Sách Shopee.\n\n \n\n10. SỐ DƯ TÀI KHOẢN SHOPEE\n\n10.1. Số Dư Tài Khoản Shopee là một tính năng do Shopee hoặc nhà cung cấp dịch vụ được phép của Shopee cung cấp để hỗ trợ việc ghi nhận tiền bán hàng hoặc giá trị tiền được hoàn trả cho các giao dịch trả hàng/hoàn tiền. Tổng giá trị ghi nhận này, trừ đi các khoản đã được thanh toán, sẽ được thể hiện ở mục Số Dư Tài Khoản Shopee.",
+              "dense_score": 0.7737,
+              "lexical_score": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    "paragraph_dense": {
+      "description": "ParagraphWindowChunker(650, overlap=1) + title/metadata enrichment + inclusive customer_role + dense retrieval",
+      "chunk_count": 499,
+      "source_hit_at_3": "5/5",
+      "evidence_hit_at_3": "1/5",
+      "retrieval": [
+        {
+          "id": 1,
+          "query": "Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-return-refund-policy",
+          "evidence_terms": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.7963,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_9",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 9,
+              "content_preview": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "content": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "dense_score": 0.7963,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6687,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_8",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 8,
+              "content_preview": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây. 3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiề",
+              "content": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây.\n\n3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "dense_score": 0.6687,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6393,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_20",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 20,
+              "content_preview": "v. Trong trường hợp một yêu cầu Trả hàng COM được tạo trong một tháng nhưng, vì bất cứ lý do gì, được Shopee giải quyết trong tháng tiếp theo, thì yêu cầu này sẽ được tính vào hạn mức của tháng mà yêu cầu đó được tạo, và không ảnh hưởng đến hạn mức của tháng tiếp theo. vi. Trong trường hợp vì bất cứ lý do gì mà dù cho Người Mua vẫn có thể thực hiện yêu cầu Trả hàng COM từ tài khoản của Người Mua, Shopee vẫn có quyền từ chối yêu cầu này khi yêu cầu đó được thực hiện sau khi Người Mua đã đạt hạn mức trong tháng hoặc bị chấm dứt quyền trả hàng COM.",
+              "content": "v. Trong trường hợp một yêu cầu Trả hàng COM được tạo trong một tháng nhưng, vì bất cứ lý do gì, được Shopee giải quyết trong tháng tiếp theo, thì yêu cầu này sẽ được tính vào hạn mức của tháng mà yêu cầu đó được tạo, và không ảnh hưởng đến hạn mức của tháng tiếp theo.\n\nvi. Trong trường hợp vì bất cứ lý do gì mà dù cho Người Mua vẫn có thể thực hiện yêu cầu Trả hàng COM từ tài khoản của Người Mua, Shopee vẫn có quyền từ chối yêu cầu này khi yêu cầu đó được thực hiện sau khi Người Mua đã đạt hạn mức trong tháng hoặc bị chấm dứt quyền trả hàng COM.",
+              "dense_score": 0.6393,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "query": "Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-refund-timeline",
+          "evidence_terms": [
+            "thẻ tín dụng/ghi nợ",
+            "7 - 14 ngày làm việc"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.6618,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_7",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 7,
+              "content_preview": "Đối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví ShopeePay của bạn để được nhận tiền hoàn. Đối với các đơn hàng thanh toán bằng SPayLater kết hợp với các phương thức thanh toán khác:",
+              "content": "Đối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví ShopeePay của bạn để được nhận tiền hoàn.\n\nĐối với các đơn hàng thanh toán bằng SPayLater kết hợp với các phương thức thanh toán khác:",
+              "dense_score": 0.6618,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.6213,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_6",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 6,
+              "content_preview": "Đối với các hình thức hoàn tiền về Ví Shopee Pay, tại thời điểm xử lý hoàn tiền, ví cần ở trạng thái bình thường và còn liên kết với tài khoản Shopee để việc hoàn tiền thành công trong 24h. Đối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví Sh",
+              "content": "Đối với các hình thức hoàn tiền về Ví Shopee Pay, tại thời điểm xử lý hoàn tiền, ví cần ở trạng thái bình thường và còn liên kết với tài khoản Shopee để việc hoàn tiền thành công trong 24h.\n\nĐối với các đơn hàng thanh toán bằng hình thức Thanh toán khi nhận hàng hoặc Thanh toán QR/Ứng dụng ngân hàng, kênh hoàn tiền sẽ tùy theo phương thức hoàn tiền khi bạn gửi yêu cầu Trả hàng Hoàn tiền. Trong trường hợp thông tin tài khoản Ngân hàng không chính xác/Ví ShopeePay của bạn không ở trạng thái hoạt động bình thường ở thời điểm xử lý hoàn tiền, bạn cần cập nhật lại thông tin tài khoản Ngân hàng/Ví ShopeePay của bạn để được nhận tiền hoàn.",
+              "dense_score": 0.6213,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.6152,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_8",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 8,
+              "content_preview": "Đối với các đơn hàng thanh toán bằng SPayLater kết hợp với các phương thức thanh toán khác: Số tiền đã thanh toán bằng SPayLater: hoàn về Số dư khả dụng SPayLater trong 24 giờ hoặc Hóa đơn SPayLater trong 3 - 5 ngày làm việc tiếp theo (chi tiết xem tại Bảng bên trên) Số tiền thanh toán bằng phương thức thanh toán khác: hoàn về Ví ShopeePay (nếu trước đó bạn chon thanh toán bằng Ví ShopeePay) hoặc Số dư TK Shopee (nếu trước đó bạn chọn thanh toán bằng Thanh toán QR/Ứng dụng ngân hàng) trong 24 giờ tiếp theo. Bạn có hài lòng với bài viết này? Hài lòng Không hài lòng",
+              "content": "Đối với các đơn hàng thanh toán bằng SPayLater kết hợp với các phương thức thanh toán khác:\n\nSố tiền đã thanh toán bằng SPayLater: hoàn về Số dư khả dụng SPayLater trong 24 giờ hoặc Hóa đơn SPayLater trong 3 - 5 ngày làm việc tiếp theo (chi tiết xem tại Bảng bên trên)\n\nSố tiền thanh toán bằng phương thức thanh toán khác: hoàn về Ví ShopeePay (nếu trước đó bạn chon thanh toán bằng Ví ShopeePay) hoặc Số dư TK Shopee (nếu trước đó bạn chọn thanh toán bằng Thanh toán QR/Ứng dụng ngân hàng) trong 24 giờ tiếp theo.\n\nBạn có hài lòng với bài viết này?\n\nHài lòng\n\nKhông hài lòng",
+              "dense_score": 0.6152,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "query": "Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-listing-rules",
+          "evidence_terms": [
+            "40% diện tích toàn ảnh",
+            "phông nền hình ảnh là tiếng Việt"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "40% diện tích toàn ảnh"
+          ],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.7935,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_11",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 11,
+              "content_preview": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE Tiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau: 1. Hình ảnh sản phẩm a. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ản",
+              "content": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE\n\nTiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau:\n\n1. Hình ảnh sản phẩm\n\na. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán.\n\nb. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh.",
+              "dense_score": 0.7935,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.7748,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_18",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 18,
+              "content_preview": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam - Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm; - Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh; - Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục. 3.4. Thời trang/Giày dép/Phụ kiện - Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước. - Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn h",
+              "content": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam\n\n- Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm;\n\n- Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh;\n\n- Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục.\n\n3.4. Thời trang/Giày dép/Phụ kiện\n\n- Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước.\n\n- Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm.",
+              "dense_score": 0.7748,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.7556,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_19",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 19,
+              "content_preview": "- Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm. - Nên có ít nhất một hình ảnh thật của sản phẩm để khách hàng dễ dàng lựa chọn và tránh những sự nhầm lẫn không đáng có. 3.5. Nhà cửa & Đời sống Đăng sản phẩm theo đúng định dạng tại đây. 3.6. Bách hóa Online a. Thực phẩm khô: Đăng đầy đủ thông tin nguồn gốc, xuất xứ, hạn sử dụng. Riêng đối với các mặt hàng dễ hư hỏng, cần lưu ý cách sử dụng, bảo quản thích hợp. b. Đồ uống có cồn:",
+              "content": "- Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm.\n\n- Nên có ít nhất một hình ảnh thật của sản phẩm để khách hàng dễ dàng lựa chọn và tránh những sự nhầm lẫn không đáng có.\n\n3.5. Nhà cửa & Đời sống\n\nĐăng sản phẩm theo đúng định dạng tại đây.\n\n3.6. Bách hóa Online\n\na. Thực phẩm khô: Đăng đầy đủ thông tin nguồn gốc, xuất xứ, hạn sử dụng. Riêng đối với các mặt hàng dễ hư hỏng, cần lưu ý cách sử dụng, bảo quản thích hợp.\n\nb. Đồ uống có cồn:",
+              "dense_score": 0.7556,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "query": "Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "evidence_terms": [
+            "video quá trình đóng gói",
+            "trong vòng 24 giờ"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "trong vòng 24 giờ"
+          ],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.8031,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_46",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 46,
+              "content_preview": "c. Thời hạn cung cấp bằng chứng: Trừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại. 4. Bồi thường a. Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+              "content": "c.    Thời hạn cung cấp bằng chứng:\n\nTrừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại.\n\n4. Bồi thường\n\na.    Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+              "dense_score": 0.8031,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.7798,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_40",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 40,
+              "content_preview": "2. Thời gian xử lý khiếu nại: a. Tối đa 10 ngày làm việc kể từ thời điểm nhận được đầy đủ bằng chứng hợp lệ từ các bên có liên quan. Trong trường hợp vụ việc có nhiều tình tiết phức tạp đòi hỏi cần nhiều thời gian để xác minh thì thời gian xử lý khiếu nại có thể kéo dài hơn.Thời gian xử lý khiếu nại sẽ được Shopee thông báo cho các bên liên quan theo từng trường hợp cụ thể.",
+              "content": "2. Thời gian xử lý khiếu nại:\n\na.    Tối đa 10 ngày làm việc kể từ thời điểm nhận được đầy đủ bằng chứng hợp lệ từ các bên có liên quan. Trong trường hợp vụ việc có nhiều tình tiết phức tạp đòi hỏi cần nhiều thời gian để xác minh thì thời gian xử lý khiếu nại có thể kéo dài hơn.Thời gian xử lý khiếu nại sẽ được Shopee thông báo cho các bên liên quan theo từng trường hợp cụ thể.",
+              "dense_score": 0.7798,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.779,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_41",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 41,
+              "content_preview": "a. Tối đa 10 ngày làm việc kể từ thời điểm nhận được đầy đủ bằng chứng hợp lệ từ các bên có liên quan. Trong trường hợp vụ việc có nhiều tình tiết phức tạp đòi hỏi cần nhiều thời gian để xác minh thì thời gian xử lý khiếu nại có thể kéo dài hơn.Thời gian xử lý khiếu nại sẽ được Shopee thông báo cho các bên liên quan theo từng trường hợp cụ thể.",
+              "content": "a.    Tối đa 10 ngày làm việc kể từ thời điểm nhận được đầy đủ bằng chứng hợp lệ từ các bên có liên quan. Trong trường hợp vụ việc có nhiều tình tiết phức tạp đòi hỏi cần nhiều thời gian để xác minh thì thời gian xử lý khiếu nại có thể kéo dài hơn.Thời gian xử lý khiếu nại sẽ được Shopee thông báo cho các bên liên quan theo từng trường hợp cụ thể.",
+              "dense_score": 0.779,
+              "lexical_score": 0.0
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "query": "Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận?",
+          "metadata_filter": {
+            "customer_role": "both"
+          },
+          "expected_doc_id": "shopee-terms-of-service-vn",
+          "evidence_terms": [
+            "đã nhận được hàng",
+            "điều chỉnh khoản"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "đã nhận được hàng"
+          ],
+          "evidence_hit_at_3": false,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.7895,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_117",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 117,
+              "content_preview": "13. VẬN CHUYỂN 13.1. Khi vận chuyển thành công đơn hàng, Shopee sẽ thông báo đến Người Bán về việc đã nhận được tiền thanh toán từ phía Người Mua. Trừ trường hợp có thỏa thuận khác với Shopee, Người Bán có trách nhiệm cung cấp đầy đủ thông tin tài khoản ngân hàng để Shopee tiến hành chuyển tiền thanh toán cho đơn hàng đó. 13.2. Người Bán phải luôn nỗ lực để đảm bảo Người Mua sẽ nhận được hàng đúng hẹn trong Thời Gian Shopee Đảm Bảo.",
+              "content": "13. VẬN CHUYỂN\n\n13.1. Khi vận chuyển thành công đơn hàng, Shopee sẽ thông báo đến Người Bán về việc đã nhận được tiền thanh toán từ phía Người Mua. Trừ trường hợp có thỏa thuận khác với Shopee, Người Bán có trách nhiệm cung cấp đầy đủ thông tin tài khoản ngân hàng để Shopee tiến hành chuyển tiền thanh toán cho đơn hàng đó.\n\n13.2. Người Bán phải luôn nỗ lực để đảm bảo Người Mua sẽ nhận được hàng đúng hẹn trong Thời Gian Shopee Đảm Bảo.",
+              "dense_score": 0.7895,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 2,
+              "score": 0.7664,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_87",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 87,
+              "content_preview": "i. Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua ngay sau khi Người Mua xác nhận “Đã nhận được hàng” trên Trang Shopee; ii. Không ảnh hưởng đến Điểm b (i) nêu trên, trong trường hợp Shopee nhận thấy cần thêm thời gian để xem xét, kiểm tra đơn hàng, Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua sau khi hết Thời Gian Shopee Đảm Bảo. c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”:",
+              "content": "i. Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua ngay sau khi Người Mua xác nhận “Đã nhận được hàng” trên Trang Shopee;\n\nii. Không ảnh hưởng đến Điểm b (i) nêu trên, trong trường hợp Shopee nhận thấy cần thêm thời gian để xem xét, kiểm tra đơn hàng, Shopee sẽ thanh toán Khoản Tiền Thanh Toán từ Người Mua sau khi hết Thời Gian Shopee Đảm Bảo.\n\nc) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”:",
+              "dense_score": 0.7664,
+              "lexical_score": 0.0
+            },
+            {
+              "rank": 3,
+              "score": 0.762,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_89",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 89,
+              "content_preview": "i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+              "content": "i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+              "dense_score": 0.762,
+              "lexical_score": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    "paragraph_hybrid": {
+      "description": "ParagraphWindowChunker(650, overlap=1) + title/metadata enrichment + inclusive customer_role + 55% dense/45% BM25",
+      "chunk_count": 499,
+      "source_hit_at_3": "5/5",
+      "evidence_hit_at_3": "5/5",
+      "retrieval": [
+        {
+          "id": 1,
+          "query": "Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-return-refund-policy",
+          "evidence_terms": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "15 (mười lăm) ngày",
+            "24 giờ"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.944,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_9",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 9,
+              "content_preview": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "content": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "dense_score": 0.7963,
+              "lexical_score": 1.0
+            },
+            {
+              "rank": 2,
+              "score": 0.8976,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_8",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 8,
+              "content_preview": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây. 3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiề",
+              "content": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây.\n\n3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+              "dense_score": 0.6687,
+              "lexical_score": 0.975
+            },
+            {
+              "rank": 3,
+              "score": 0.7069,
+              "doc_id": "shopee-buyer-return-refund-policy",
+              "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_36",
+              "source": "shopee-buyer-return-refund-policy.md",
+              "chunk_index": 36,
+              "content_preview": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận. 8.2. Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:",
+              "content": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận.\n\n8.2.  Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:",
+              "dense_score": 0.6274,
+              "lexical_score": 0.5765
+            }
+          ],
+          "agent_answer": "Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee. Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận. 8.2. Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:"
+        },
+        {
+          "id": 2,
+          "query": "Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu?",
+          "metadata_filter": {
+            "customer_role": "buyer"
+          },
+          "expected_doc_id": "shopee-buyer-refund-timeline",
+          "evidence_terms": [
+            "thẻ tín dụng/ghi nợ",
+            "7 - 14 ngày làm việc"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "thẻ tín dụng/ghi nợ",
+            "7 - 14 ngày làm việc"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.8766,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_1",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 1,
+              "content_preview": "Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng Ví ShopeePay 24 giờ (với điều kiện Ví Shopee Pay vẫn hoạt động bình thường) Tài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee. 2 ngày làm việc (tùy ngân hàng) Ứng dụng Ngân hàng Tài khoản Ngân hàng ban đầu 7 ngày làm việc Ví ShopeePay Ví ShopeePay 24 giờ (với điều kiện Ví Shopee Pay vẫn hoạt động bình thường) Thẻ nội địa Napas Thẻ nội địa Napas 2 - 5 ngày làm việc (tùy ngân hàng) Thẻ tín dụng/ghi nợ Thẻ tín dụng/ghi nợ 7 - 14 ngày làm việc (tùy theo ngân hàng) Apple Pay Thẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pa",
+              "content": "Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng\n\nVí ShopeePay\n\n24 giờ (với điều kiện Ví\n\nShopee Pay vẫn hoạt động\n\nbình thường)\n\nTài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee.\n\n2 ngày làm việc (tùy ngân hàng)\n\nỨng dụng Ngân hàng\n\nTài khoản Ngân hàng ban đầu\n\n7 ngày làm việc\n\nVí ShopeePay\n\nVí ShopeePay\n\n24 giờ (với điều kiện Ví\n\nShopee Pay vẫn hoạt động\n\nbình thường)\n\nThẻ nội địa Napas\n\nThẻ nội địa Napas\n\n2 - 5 ngày làm việc (tùy ngân hàng)\n\nThẻ tín dụng/ghi nợ\n\nThẻ tín dụng/ghi nợ\n\n7 - 14 ngày làm việc (tùy theo ngân hàng)\n\nApple Pay\n\nThẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pay",
+              "dense_score": 0.5513,
+              "lexical_score": 1.0
+            },
+            {
+              "rank": 2,
+              "score": 0.8178,
+              "doc_id": "shopee-buyer-refund-timeline",
+              "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_4",
+              "source": "shopee-buyer-refund-timeline.md",
+              "chunk_index": 4,
+              "content_preview": "⚠️ Lưu ý: Trong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán Đối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng Đối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng.",
+              "content": "⚠️ Lưu ý:\n\nTrong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán\n\nĐối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng\n\nĐối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng.",
+              "dense_score": 0.5555,
+              "lexical_score": 0.8668
+            },
+            {
+              "rank": 3,
+              "score": 0.8113,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_65",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 65,
+              "content_preview": "9. ĐẶT HÀNG VÀ THANH TOÁN 9.1. Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau: (i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng Hình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng. (ii) Thanh Toán Khi Nhận Hàng (COD) Shopee cung cấp dịch vụ COD ở một số nước. Người Mua có thể trả tiền mặt trực tiếp cho người vận chuyển vào thời ",
+              "content": "9. ĐẶT HÀNG VÀ THANH TOÁN\n\n9.1. Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau:\n\n(i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng\n\nHình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng.\n\n(ii) Thanh Toán Khi Nhận Hàng (COD)\n\nShopee cung cấp dịch vụ COD ở một số nước. Người Mua có thể trả tiền mặt trực tiếp cho người vận chuyển vào thời điểm nhận hàng.",
+              "dense_score": 0.5299,
+              "lexical_score": 0.8679
+            }
+          ],
+          "agent_answer": "Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau: (i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng Hình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng. Trong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán Đối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng Đối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng. Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng Ví ShopeePay 24 giờ (với điều kiện Ví Tài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee. 2 ngày làm việc (tùy ngân hàng) Ứng dụng Ngân hàng Thẻ nội địa Napas 2 - 5 ngày làm việc (tùy ngân hàng) Thẻ tín dụng/ghi nợ 7 - 14 ngày làm việc (tùy theo ngân hàng) Apple Pay Thẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pay"
+        },
+        {
+          "id": 3,
+          "query": "Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-listing-rules",
+          "evidence_terms": [
+            "40% diện tích toàn ảnh",
+            "phông nền hình ảnh là tiếng Việt"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "40% diện tích toàn ảnh",
+            "phông nền hình ảnh là tiếng Việt"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.9432,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_11",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 11,
+              "content_preview": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE Tiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau: 1. Hình ảnh sản phẩm a. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ản",
+              "content": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE\n\nTiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau:\n\n1. Hình ảnh sản phẩm\n\na. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán.\n\nb. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh.",
+              "dense_score": 0.7935,
+              "lexical_score": 1.0
+            },
+            {
+              "rank": 2,
+              "score": 0.887,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_12",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 12,
+              "content_preview": "b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. c. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài. d. Hình ảnh không chứa yếu tố ghê rợn gây khó chịu cho người xem. e. Tuyệt đối không được đăng các hình ảnh khỏa thân, khiêu gợi, phản cảm, không phù hợp với thuần phong mỹ tục. 2. Tên sản phẩm a. Tên sản phẩm phải mô tả đúng hàng hóa, dịch vụ được đăng bán và phải là tiếng Việt có dấu, đủ ký tự, rõ nghĩa, không dùng các ký tự đặc biệt, không viết tắt.",
+              "content": "b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh.\n\nc. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài.\n\nd. Hình ảnh không chứa yếu tố ghê rợn gây khó chịu cho người xem.\n\ne. Tuyệt đối không được đăng các hình ảnh khỏa thân, khiêu gợi, phản cảm, không phù hợp với thuần phong mỹ tục.\n\n2. Tên sản phẩm\n\na. Tên sản phẩm phải mô tả đúng hàng hóa, dịch vụ được đăng bán và phải là tiếng Việt có dấu, đủ ký tự, rõ nghĩa, không dùng các ký tự đặc biệt, không viết tắt.",
+              "dense_score": 0.7456,
+              "lexical_score": 0.9044
+            },
+            {
+              "rank": 3,
+              "score": 0.7845,
+              "doc_id": "shopee-seller-listing-rules",
+              "chunk_doc_id": "shopee-seller-listing-rules::chunk_18",
+              "source": "shopee-seller-listing-rules.md",
+              "chunk_index": 18,
+              "content_preview": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam - Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm; - Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh; - Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục. 3.4. Thời trang/Giày dép/Phụ kiện - Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước. - Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn h",
+              "content": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam\n\n- Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm;\n\n- Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh;\n\n- Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục.\n\n3.4. Thời trang/Giày dép/Phụ kiện\n\n- Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước.\n\n- Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm.",
+              "dense_score": 0.7748,
+              "lexical_score": 0.6588
+            }
+          ],
+          "agent_answer": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE Tiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Hình ảnh sản phẩm a. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. c. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài. - Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước. - Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm."
+        },
+        {
+          "id": 4,
+          "query": "Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích?",
+          "metadata_filter": {
+            "customer_role": "seller"
+          },
+          "expected_doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "evidence_terms": [
+            "video quá trình đóng gói",
+            "trong vòng 24 giờ"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "video quá trình đóng gói",
+            "trong vòng 24 giờ"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.9176,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_43",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 43,
+              "content_preview": "3. Bằng chứng khiếu nại: a. Khiếu nại với đơn trả hàng hoàn tiền (dành cho Người Mua/ Người Bán): Xem chi tiết tại Chính sách Trả hàng và Hoàn tiền. b. Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán): Khi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee: i. Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại): - Thông tin đơn hàng (mã đơn hàng/ mã vận đơn); - Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính ",
+              "content": "3. Bằng chứng khiếu nại:\n\na.    Khiếu nại với đơn trả hàng hoàn tiền (dành cho Người Mua/ Người Bán): Xem chi tiết tại Chính sách Trả hàng và Hoàn tiền.\n\nb.    Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán):\n\nKhi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee:\n\ni. Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại):\n\n- Thông tin đơn hàng (mã đơn hàng/ mã vận đơn);\n\n- Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính sách Vận chuyển;",
+              "dense_score": 0.7004,
+              "lexical_score": 1.0
+            },
+            {
+              "rank": 2,
+              "score": 0.8974,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_46",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 46,
+              "content_preview": "c. Thời hạn cung cấp bằng chứng: Trừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại. 4. Bồi thường a. Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+              "content": "c.    Thời hạn cung cấp bằng chứng:\n\nTrừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại.\n\n4. Bồi thường\n\na.    Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+              "dense_score": 0.8031,
+              "lexical_score": 0.8923
+            },
+            {
+              "rank": 3,
+              "score": 0.8647,
+              "doc_id": "shopee-seller-shipping-fulfillment-policy",
+              "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_45",
+              "source": "shopee-seller-shipping-fulfillment-policy.md",
+              "chunk_index": 45,
+              "content_preview": "- Thông tin đơn hàng (mã vận đơn, mã đơn hàng); - Ngoại quan 06 mặt, tình trạng sản phẩm bên trong và chi tiết thể hiện được lý do khiếu nại của Người Bán; iii. Các bằng chứng khác (nếu có); iv. Lưu ý: Người Bán cần phải giữ lại vận đơn/ hóa đơn vận chuyển mỗi khi giao hàng cho đơn vị vận chuyển. Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng. c. Thời hạn cung cấp bằng chứng:",
+              "content": "- Thông tin đơn hàng (mã vận đơn, mã đơn hàng);\n\n- Ngoại quan 06 mặt, tình trạng sản phẩm bên trong và chi tiết thể hiện được lý do khiếu nại của Người Bán;\n\niii. Các bằng chứng khác (nếu có);\n\niv. Lưu ý: Người Bán cần phải giữ lại vận đơn/ hóa đơn vận chuyển mỗi khi giao hàng cho đơn vị vận chuyển. Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng.\n\nc.    Thời hạn cung cấp bằng chứng:",
+              "dense_score": 0.7261,
+              "lexical_score": 0.8668
+            }
+          ],
+          "agent_answer": "Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng. c. Thời hạn cung cấp bằng chứng: c. Thời hạn cung cấp bằng chứng: Trừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại. 4. Bồi thường Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có). 3. Bằng chứng khiếu nại: b. Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán): Khi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee: Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại): - Thông tin đơn hàng (mã đơn hàng/ mã vận đơn); - Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính sách Vận chuyển;"
+        },
+        {
+          "id": 5,
+          "query": "Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận?",
+          "metadata_filter": {
+            "customer_role": "both"
+          },
+          "expected_doc_id": "shopee-terms-of-service-vn",
+          "evidence_terms": [
+            "đã nhận được hàng",
+            "điều chỉnh khoản"
+          ],
+          "expected_rank": 1,
+          "source_hit_at_3": true,
+          "evidence_found": [
+            "đã nhận được hàng",
+            "điều chỉnh khoản"
+          ],
+          "evidence_hit_at_3": true,
+          "top_3": [
+            {
+              "rank": 1,
+              "score": 0.9287,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_98",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 98,
+              "content_preview": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền;",
+              "content": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ  Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền;",
+              "dense_score": 0.7409,
+              "lexical_score": 1.0
+            },
+            {
+              "rank": 2,
+              "score": 0.8845,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_100",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 100,
+              "content_preview": "(c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. Trong trường hợp yêu cầu trả hàng/hoàn tiền của Người Mua không được chấp thuận, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua vào Tài Khoản Đảm Bảo Shopee vào Số Dư Tài Khoản Shopee của Người Bán.",
+              "content": "(c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. Trong trường hợp yêu cầu trả hàng/hoàn tiền của Người Mua không được chấp thuận, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua vào Tài Khoản Đảm Bảo Shopee vào Số Dư Tài Khoản Shopee của Người Bán.",
+              "dense_score": 0.718,
+              "lexical_score": 0.9158
+            },
+            {
+              "rank": 3,
+              "score": 0.8755,
+              "doc_id": "shopee-terms-of-service-vn",
+              "chunk_doc_id": "shopee-terms-of-service-vn::chunk_88",
+              "source": "shopee-terms-of-service-vn.md",
+              "chunk_index": 88,
+              "content_preview": "c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”: i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+              "content": "c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”:\n\ni. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+              "dense_score": 0.7388,
+              "lexical_score": 0.8829
+            }
+          ],
+          "agent_answer": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ  Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền; (c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”: i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;"
+        }
+      ]
+    }
+  },
+  "selected_strategy": "paragraph_hybrid",
+  "retrieval": [
+    {
+      "id": 1,
+      "query": "Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh?",
+      "metadata_filter": {
+        "customer_role": "buyer"
+      },
+      "expected_doc_id": "shopee-buyer-return-refund-policy",
+      "evidence_terms": [
+        "15 (mười lăm) ngày",
+        "24 giờ"
+      ],
+      "expected_rank": 1,
+      "source_hit_at_3": true,
+      "evidence_found": [
+        "15 (mười lăm) ngày",
+        "24 giờ"
+      ],
+      "evidence_hit_at_3": true,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.944,
+          "doc_id": "shopee-buyer-return-refund-policy",
+          "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_9",
+          "source": "shopee-buyer-return-refund-policy.md",
+          "chunk_index": 9,
+          "content_preview": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+          "content": "3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+          "dense_score": 0.7963,
+          "lexical_score": 1.0
+        },
+        {
+          "rank": 2,
+          "score": 0.8976,
+          "doc_id": "shopee-buyer-return-refund-policy",
+          "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_8",
+          "source": "shopee-buyer-return-refund-policy.md",
+          "chunk_index": 8,
+          "content_preview": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây. 3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiề",
+          "content": "Sản Phẩm ở trạng thái nguyên vẹn và nguyên bao bì nhưng Người Mua không còn nhu cầu (\"Trả hàng COM\"), theo yêu cầu tại Điều 4 dưới đây.\n\n3.2. Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee.",
+          "dense_score": 0.6687,
+          "lexical_score": 0.975
+        },
+        {
+          "rank": 3,
+          "score": 0.7069,
+          "doc_id": "shopee-buyer-return-refund-policy",
+          "chunk_doc_id": "shopee-buyer-return-refund-policy::chunk_36",
+          "source": "shopee-buyer-return-refund-policy.md",
+          "chunk_index": 36,
+          "content_preview": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận. 8.2. Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:",
+          "content": "Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận.\n\n8.2.  Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:",
+          "dense_score": 0.6274,
+          "lexical_score": 0.5765
+        }
+      ],
+      "agent_answer": "Người Mua có thể gửi yêu cầu trả hàng/hoàn tiền trong vòng 15 (mười lăm) ngày kể từ lúc đơn hàng được cập nhật giao hàng thành công. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee. Riêng đối với các Sản Phẩm là thực phẩm tươi sống và đông lạnh, Người Mua cần gửi yêu cầu trả hàng/hoàn tiền trong vòng 24 giờ kể từ lúc đơn hàng được cập nhật giao hàng thành công. Một số trường hợp Người Mua có nhu cầu trả hàng/hoàn tiền sau thời hạn trên, Shopee sẽ xem xét và có thể hỗ trợ Người Mua được trả hàng/hoàn tiền trong phạm vi phù hợp với Chính Sách Shopee. Theo hình thức “Tự sắp xếp”: Người Mua cần thanh toán trước chi phí vận chuyển cho việc trả hàng. Shopee sẽ hoàn lại số tiền bằng với chi phí vận chuyển mà Người Mua đã thanh toán cho đơn vị vận chuyển thông qua “Số Dư Tài Khoản Shopee” trên Ứng Dụng Shopee trong thời hạn 03 – 05 ngày làm việc kể từ ngày Người Mua đã gửi Sản Phẩm Hoàn Trả cho đơn vị vận chuyển và yêu cầu trả hàng/hoàn tiền của Người Mua được chấp nhận. 8.2. Với Sản Phẩm không thuộc Shopee Mall, Người Mua có thể lựa chọn hoàn trả Sản Phẩm:"
+    },
+    {
+      "id": 2,
+      "query": "Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu?",
+      "metadata_filter": {
+        "customer_role": "buyer"
+      },
+      "expected_doc_id": "shopee-buyer-refund-timeline",
+      "evidence_terms": [
+        "thẻ tín dụng/ghi nợ",
+        "7 - 14 ngày làm việc"
+      ],
+      "expected_rank": 1,
+      "source_hit_at_3": true,
+      "evidence_found": [
+        "thẻ tín dụng/ghi nợ",
+        "7 - 14 ngày làm việc"
+      ],
+      "evidence_hit_at_3": true,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.8766,
+          "doc_id": "shopee-buyer-refund-timeline",
+          "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_1",
+          "source": "shopee-buyer-refund-timeline.md",
+          "chunk_index": 1,
+          "content_preview": "Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng Ví ShopeePay 24 giờ (với điều kiện Ví Shopee Pay vẫn hoạt động bình thường) Tài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee. 2 ngày làm việc (tùy ngân hàng) Ứng dụng Ngân hàng Tài khoản Ngân hàng ban đầu 7 ngày làm việc Ví ShopeePay Ví ShopeePay 24 giờ (với điều kiện Ví Shopee Pay vẫn hoạt động bình thường) Thẻ nội địa Napas Thẻ nội địa Napas 2 - 5 ngày làm việc (tùy ngân hàng) Thẻ tín dụng/ghi nợ Thẻ tín dụng/ghi nợ 7 - 14 ngày làm việc (tùy theo ngân hàng) Apple Pay Thẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pa",
+          "content": "Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng\n\nVí ShopeePay\n\n24 giờ (với điều kiện Ví\n\nShopee Pay vẫn hoạt động\n\nbình thường)\n\nTài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee.\n\n2 ngày làm việc (tùy ngân hàng)\n\nỨng dụng Ngân hàng\n\nTài khoản Ngân hàng ban đầu\n\n7 ngày làm việc\n\nVí ShopeePay\n\nVí ShopeePay\n\n24 giờ (với điều kiện Ví\n\nShopee Pay vẫn hoạt động\n\nbình thường)\n\nThẻ nội địa Napas\n\nThẻ nội địa Napas\n\n2 - 5 ngày làm việc (tùy ngân hàng)\n\nThẻ tín dụng/ghi nợ\n\nThẻ tín dụng/ghi nợ\n\n7 - 14 ngày làm việc (tùy theo ngân hàng)\n\nApple Pay\n\nThẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pay",
+          "dense_score": 0.5513,
+          "lexical_score": 1.0
+        },
+        {
+          "rank": 2,
+          "score": 0.8178,
+          "doc_id": "shopee-buyer-refund-timeline",
+          "chunk_doc_id": "shopee-buyer-refund-timeline::chunk_4",
+          "source": "shopee-buyer-refund-timeline.md",
+          "chunk_index": 4,
+          "content_preview": "⚠️ Lưu ý: Trong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán Đối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng Đối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng.",
+          "content": "⚠️ Lưu ý:\n\nTrong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán\n\nĐối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng\n\nĐối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng.",
+          "dense_score": 0.5555,
+          "lexical_score": 0.8668
+        },
+        {
+          "rank": 3,
+          "score": 0.8113,
+          "doc_id": "shopee-terms-of-service-vn",
+          "chunk_doc_id": "shopee-terms-of-service-vn::chunk_65",
+          "source": "shopee-terms-of-service-vn.md",
+          "chunk_index": 65,
+          "content_preview": "9. ĐẶT HÀNG VÀ THANH TOÁN 9.1. Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau: (i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng Hình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng. (ii) Thanh Toán Khi Nhận Hàng (COD) Shopee cung cấp dịch vụ COD ở một số nước. Người Mua có thể trả tiền mặt trực tiếp cho người vận chuyển vào thời ",
+          "content": "9. ĐẶT HÀNG VÀ THANH TOÁN\n\n9.1. Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau:\n\n(i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng\n\nHình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng.\n\n(ii) Thanh Toán Khi Nhận Hàng (COD)\n\nShopee cung cấp dịch vụ COD ở một số nước. Người Mua có thể trả tiền mặt trực tiếp cho người vận chuyển vào thời điểm nhận hàng.",
+          "dense_score": 0.5299,
+          "lexical_score": 0.8679
+        }
+      ],
+      "agent_answer": "Vào từng thời điểm, phương thức thanh toán cho hàng hóa mua trên Sàn Shopee có thể được thực hiện bằng một hoặc nhiều phương thức thanh toán như sau: (i) Thẻ Tín Dụng/Ghi Nợ hoặc trả góp bằng thẻ tín dụng Hình thức thanh toán qua thẻ tín dụng/ghi nợ hoặc trả góp bằng thẻ tín dụng được thực hiện thông qua kênh thanh toán của bên thứ ba và danh sách thẻ được chấp nhận phụ thuộc vào kênh thanh toán mà bạn đang sử dụng. Trong quá trình xử lý nếu Người bán có khiếu nại, Shopee sẽ xem xét & thông báo kết quả cuối cùng đến bạn tại mục Thông báo > Cập nhật đơn hàng trong vòng 3-5 ngày làm việc kể từ lúc tiếp nhận khiếu nại từ Người bán Đối với hình thức trả hàng “Tự sắp xếp”, Phí trả hàng sẽ được hoàn lại cho bạn theo Chính sách hỗ trợ phí trả hàng Đối với đơn hàng thanh toán bằng Thẻ Tín dụng/Ghi nợ, Shopee chỉ hỗ trợ hoàn tiền về đúng tài khoản Tín dụng/Ghi nợ đã sử dụng khi thanh toán đơn hàng. Thanh toán khi nhận hàng/ Thanh toán QR/ Ứng dụng ngân hàng Ví ShopeePay 24 giờ (với điều kiện Ví Tài khoản Ngân hàng mặc định được liên kết với tài khoản Shopee. 2 ngày làm việc (tùy ngân hàng) Ứng dụng Ngân hàng Thẻ nội địa Napas 2 - 5 ngày làm việc (tùy ngân hàng) Thẻ tín dụng/ghi nợ 7 - 14 ngày làm việc (tùy theo ngân hàng) Apple Pay Thẻ tín dụng/ghi nợ liên kết với tài khoản Apple Pay"
+    },
+    {
+      "id": 3,
+      "query": "Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào?",
+      "metadata_filter": {
+        "customer_role": "seller"
+      },
+      "expected_doc_id": "shopee-seller-listing-rules",
+      "evidence_terms": [
+        "40% diện tích toàn ảnh",
+        "phông nền hình ảnh là tiếng Việt"
+      ],
+      "expected_rank": 1,
+      "source_hit_at_3": true,
+      "evidence_found": [
+        "40% diện tích toàn ảnh",
+        "phông nền hình ảnh là tiếng Việt"
+      ],
+      "evidence_hit_at_3": true,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.9432,
+          "doc_id": "shopee-seller-listing-rules",
+          "chunk_doc_id": "shopee-seller-listing-rules::chunk_11",
+          "source": "shopee-seller-listing-rules.md",
+          "chunk_index": 11,
+          "content_preview": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE Tiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau: 1. Hình ảnh sản phẩm a. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ản",
+          "content": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE\n\nTiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Cụ thể như sau:\n\n1. Hình ảnh sản phẩm\n\na. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán.\n\nb. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh.",
+          "dense_score": 0.7935,
+          "lexical_score": 1.0
+        },
+        {
+          "rank": 2,
+          "score": 0.887,
+          "doc_id": "shopee-seller-listing-rules",
+          "chunk_doc_id": "shopee-seller-listing-rules::chunk_12",
+          "source": "shopee-seller-listing-rules.md",
+          "chunk_index": 12,
+          "content_preview": "b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. c. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài. d. Hình ảnh không chứa yếu tố ghê rợn gây khó chịu cho người xem. e. Tuyệt đối không được đăng các hình ảnh khỏa thân, khiêu gợi, phản cảm, không phù hợp với thuần phong mỹ tục. 2. Tên sản phẩm a. Tên sản phẩm phải mô tả đúng hàng hóa, dịch vụ được đăng bán và phải là tiếng Việt có dấu, đủ ký tự, rõ nghĩa, không dùng các ký tự đặc biệt, không viết tắt.",
+          "content": "b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh.\n\nc. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài.\n\nd. Hình ảnh không chứa yếu tố ghê rợn gây khó chịu cho người xem.\n\ne. Tuyệt đối không được đăng các hình ảnh khỏa thân, khiêu gợi, phản cảm, không phù hợp với thuần phong mỹ tục.\n\n2. Tên sản phẩm\n\na. Tên sản phẩm phải mô tả đúng hàng hóa, dịch vụ được đăng bán và phải là tiếng Việt có dấu, đủ ký tự, rõ nghĩa, không dùng các ký tự đặc biệt, không viết tắt.",
+          "dense_score": 0.7456,
+          "lexical_score": 0.9044
+        },
+        {
+          "rank": 3,
+          "score": 0.7845,
+          "doc_id": "shopee-seller-listing-rules",
+          "chunk_doc_id": "shopee-seller-listing-rules::chunk_18",
+          "source": "shopee-seller-listing-rules.md",
+          "chunk_index": 18,
+          "content_preview": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam - Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm; - Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh; - Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục. 3.4. Thời trang/Giày dép/Phụ kiện - Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước. - Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn h",
+          "content": "3.3. Thời trang/Đồ lót nữ - Đồ lót nam\n\n- Ảnh đại diện sản phẩm nên là ảnh thực, chụp riêng sản phẩm;\n\n- Trong các ảnh do người mẫu mặc, phần ảnh sản phẩm thực phải chiếm ít nhất 40-50% diện tích toàn ảnh;\n\n- Người mẫu tạo hình không gây phản cảm, ảnh không mang nội dung khiêu dâm, trái với đạo đức xã hội, thuần phong mỹ tục.\n\n3.4. Thời trang/Giày dép/Phụ kiện\n\n- Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước.\n\n- Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm.",
+          "dense_score": 0.7748,
+          "lexical_score": 0.6588
+        }
+      ],
+      "agent_answer": "C. HƯỚNG DẪN ĐĂNG BÁN SẢN PHẨM TRÊN SHOPEE Tiêu đề, hình ảnh, giá cả, mô tả sản phẩm và các thông tin liên quan phải thống nhất, đúng chính tả, đúng quy định về đăng tin của Shopee. Hình ảnh sản phẩm a. Hình ảnh sản phẩm phải là ảnh chụp rõ, chi tiết tình trạng sản phẩm. Không được để những hình ảnh hoặc thông tin không liên quan đến sản phẩm này như thông tin giới thiệu shop, thông tin liên hệ hay thông tin thanh toán. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. b. Phải có ít nhất một hình ảnh thật của sản phẩm do chính Người Bán tự chụp. Trong ảnh này, diện tích sản phẩm thật phải chiếm ít nhất 40% diện tích toàn ảnh. c. Ngôn ngữ trên phông nền hình ảnh là tiếng Việt, không dùng ngôn ngữ nước ngoài. - Nêu rõ chất liệu và kích thước của sản phẩm. Riêng đối với sản phẩm thuộc ngành hàng Thời trang phải có bảng quy đổi kích thước. - Đối với các sản phẩm thời trang hoặc phụ kiện làm bằng lụa tơ tằm, Người Bán phải đăng kèm chứng nhận nhãn hiệu ở phần hình ảnh sản phẩm."
+    },
+    {
+      "id": 4,
+      "query": "Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích?",
+      "metadata_filter": {
+        "customer_role": "seller"
+      },
+      "expected_doc_id": "shopee-seller-shipping-fulfillment-policy",
+      "evidence_terms": [
+        "video quá trình đóng gói",
+        "trong vòng 24 giờ"
+      ],
+      "expected_rank": 1,
+      "source_hit_at_3": true,
+      "evidence_found": [
+        "video quá trình đóng gói",
+        "trong vòng 24 giờ"
+      ],
+      "evidence_hit_at_3": true,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.9176,
+          "doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_43",
+          "source": "shopee-seller-shipping-fulfillment-policy.md",
+          "chunk_index": 43,
+          "content_preview": "3. Bằng chứng khiếu nại: a. Khiếu nại với đơn trả hàng hoàn tiền (dành cho Người Mua/ Người Bán): Xem chi tiết tại Chính sách Trả hàng và Hoàn tiền. b. Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán): Khi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee: i. Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại): - Thông tin đơn hàng (mã đơn hàng/ mã vận đơn); - Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính ",
+          "content": "3. Bằng chứng khiếu nại:\n\na.    Khiếu nại với đơn trả hàng hoàn tiền (dành cho Người Mua/ Người Bán): Xem chi tiết tại Chính sách Trả hàng và Hoàn tiền.\n\nb.    Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán):\n\nKhi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee:\n\ni. Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại):\n\n- Thông tin đơn hàng (mã đơn hàng/ mã vận đơn);\n\n- Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính sách Vận chuyển;",
+          "dense_score": 0.7004,
+          "lexical_score": 1.0
+        },
+        {
+          "rank": 2,
+          "score": 0.8974,
+          "doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_46",
+          "source": "shopee-seller-shipping-fulfillment-policy.md",
+          "chunk_index": 46,
+          "content_preview": "c. Thời hạn cung cấp bằng chứng: Trừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại. 4. Bồi thường a. Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+          "content": "c.    Thời hạn cung cấp bằng chứng:\n\nTrừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại.\n\n4. Bồi thường\n\na.    Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có).",
+          "dense_score": 0.8031,
+          "lexical_score": 0.8923
+        },
+        {
+          "rank": 3,
+          "score": 0.8647,
+          "doc_id": "shopee-seller-shipping-fulfillment-policy",
+          "chunk_doc_id": "shopee-seller-shipping-fulfillment-policy::chunk_45",
+          "source": "shopee-seller-shipping-fulfillment-policy.md",
+          "chunk_index": 45,
+          "content_preview": "- Thông tin đơn hàng (mã vận đơn, mã đơn hàng); - Ngoại quan 06 mặt, tình trạng sản phẩm bên trong và chi tiết thể hiện được lý do khiếu nại của Người Bán; iii. Các bằng chứng khác (nếu có); iv. Lưu ý: Người Bán cần phải giữ lại vận đơn/ hóa đơn vận chuyển mỗi khi giao hàng cho đơn vị vận chuyển. Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng. c. Thời hạn cung cấp bằng chứng:",
+          "content": "- Thông tin đơn hàng (mã vận đơn, mã đơn hàng);\n\n- Ngoại quan 06 mặt, tình trạng sản phẩm bên trong và chi tiết thể hiện được lý do khiếu nại của Người Bán;\n\niii. Các bằng chứng khác (nếu có);\n\niv. Lưu ý: Người Bán cần phải giữ lại vận đơn/ hóa đơn vận chuyển mỗi khi giao hàng cho đơn vị vận chuyển. Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng.\n\nc.    Thời hạn cung cấp bằng chứng:",
+          "dense_score": 0.7261,
+          "lexical_score": 0.8668
+        }
+      ],
+      "agent_answer": "Khi có bất kỳ khiếu nại hay tranh chấp nào về mất mát hàng hóa xảy ra, vận đơn/hóa đơn vận chuyển sẽ là bằng chứng vững chắc nhất chứng minh Người Bán đã giao hàng. c. Thời hạn cung cấp bằng chứng: c. Thời hạn cung cấp bằng chứng: Trừ trường hợp có yêu cầu khác của Shopee trong từng vụ việc cụ thể, Người khiếu nại phải cung cấp bằng chứng trong vòng 24 giờ kể từ khi gửi yêu cầu khiếu nại đến Shopee hoặc khi nhận được yêu cầu từ Shopee. Việc không thể cung cấp được bằng chứng hợp lệ trong thời hạn quy định/được yêu cầu có thể là lý do để Shopee từ chối yêu cầu của Người khiếu nại. 4. Bồi thường Kết quả xử lý khiếu nại về vận chuyển sẽ được Shopee thông báo trực tiếp cho Người Mua/ Người Bán kèm theo thông tin về mức bồi thường (nếu có). 3. Bằng chứng khiếu nại: b. Khiếu nại vận chuyển với đơn Giao không thành công (dành cho Người Bán): Khi khiếu nại, Người Bán cần cung cấp các thông tin sau cho Shopee: Hình ảnh/Video quá trình đóng gói hàng thấy rõ: (video là bằng chứng mạnh nhất được khuyến khích cung cấp khi phát sinh khiếu nại): - Thông tin đơn hàng (mã đơn hàng/ mã vận đơn); - Người Bán đã đóng gói đúng, đủ hàng, sản phẩm còn nguyên vẹn & đóng gói đúng theo quy định về đóng gói hàng hóa của Chính sách Vận chuyển;"
+    },
+    {
+      "id": 5,
+      "query": "Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận?",
+      "metadata_filter": {
+        "customer_role": "both"
+      },
+      "expected_doc_id": "shopee-terms-of-service-vn",
+      "evidence_terms": [
+        "đã nhận được hàng",
+        "điều chỉnh khoản"
+      ],
+      "expected_rank": 1,
+      "source_hit_at_3": true,
+      "evidence_found": [
+        "đã nhận được hàng",
+        "điều chỉnh khoản"
+      ],
+      "evidence_hit_at_3": true,
+      "top_3": [
+        {
+          "rank": 1,
+          "score": 0.9287,
+          "doc_id": "shopee-terms-of-service-vn",
+          "chunk_doc_id": "shopee-terms-of-service-vn::chunk_98",
+          "source": "shopee-terms-of-service-vn.md",
+          "chunk_index": 98,
+          "content_preview": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền;",
+          "content": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ  Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền;",
+          "dense_score": 0.7409,
+          "lexical_score": 1.0
+        },
+        {
+          "rank": 2,
+          "score": 0.8845,
+          "doc_id": "shopee-terms-of-service-vn",
+          "chunk_doc_id": "shopee-terms-of-service-vn::chunk_100",
+          "source": "shopee-terms-of-service-vn.md",
+          "chunk_index": 100,
+          "content_preview": "(c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. Trong trường hợp yêu cầu trả hàng/hoàn tiền của Người Mua không được chấp thuận, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua vào Tài Khoản Đảm Bảo Shopee vào Số Dư Tài Khoản Shopee của Người Bán.",
+          "content": "(c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. Trong trường hợp yêu cầu trả hàng/hoàn tiền của Người Mua không được chấp thuận, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua vào Tài Khoản Đảm Bảo Shopee vào Số Dư Tài Khoản Shopee của Người Bán.",
+          "dense_score": 0.718,
+          "lexical_score": 0.9158
+        },
+        {
+          "rank": 3,
+          "score": 0.8755,
+          "doc_id": "shopee-terms-of-service-vn",
+          "chunk_doc_id": "shopee-terms-of-service-vn::chunk_88",
+          "source": "shopee-terms-of-service-vn.md",
+          "chunk_index": 88,
+          "content_preview": "c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”: i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+          "content": "c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”:\n\ni. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;",
+          "dense_score": 0.7388,
+          "lexical_score": 0.8829
+        }
+      ],
+      "agent_answer": "(a) Trừ trường hợp quy định tại Điều 11.2(d), trong trường hợp Người Mua gửi xác nhận cho Shopee rằng Người Mua đã nhận được hàng, Shopee sẽ chuyển Tiền Thanh Toán từ Người Mua từ  Tài Khoản Đảm Bảo Shopee sang Số Dư Tài Khoản Shopee của Người Bán. Tuy nhiên nếu thời gian trả hàng/hoàn tiền vẫn chưa kết thúc, và sau đó Người Mua gửi yêu cầu trả hàng/hoàn tiền và Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, Shopee có quyền điều chỉnh Khoản Tiền Thanh Toán từ Người Mua để thực hiện hoàn tiền cho Người Mua theo Chính Sách Trả Hàng và Hoàn Tiền; (c) Trường hợp Shopee xác định được rằng yêu cầu trả hàng/hoàn tiền của Người Mua được chấp thuận, trừ khi áp dụng Điều 11.2(d), Shopee sẽ hoàn tiền cho Người Mua theo các điều khoản trong Chính Sách Trả Hàng và Hoàn Tiền của Shopee và chuyển phần còn lại (nếu có) vào Số Dư Tài Khoản Shopee của Người Bán. c) Đối với trường hợp Người Mua yêu cầu “Trả hàng/Hoàn tiền”: i. Đối với các đơn hàng có phát sinh trả hàng/hoàn tiền trước khi Shopee thanh toán Khoản Tiền Thanh Toán từ Người Mua cho Người Bán và Shopee đồng ý hoàn tiền cho Người Mua: Khoản Tiền Thanh Toán từ Người Mua còn lại (nếu có) sẽ được thanh toán cho Người Bán ngay sau khi yêu cầu trả hàng/hoàn tiền được Shopee xử lý hoàn tất theo Chính Sách Shopee;"
+    }
+  ],
+  "source_hit_at_3": "5/5",
+  "evidence_hit_at_3": "5/5"
+}
