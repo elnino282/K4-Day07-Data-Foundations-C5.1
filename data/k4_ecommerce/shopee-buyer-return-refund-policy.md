@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-buyer-return-refund-policy"
-title: "Chính sách Trả hàng và Hoàn tiền Shopee"
-source_url: "https://help.shopee.vn/portal/4/article/77251"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "buyer"
-category: "returns-policy"
-language: "vi"
+doc_id: shopee-buyer-return-refund-policy
+title: Chính sách Trả hàng và Hoàn tiền Shopee
+source_url: https://help.shopee.vn/portal/4/article/77251
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: buyer
+category: returns
+language: vi
+license_or_permission: public-page
 ---
 
 # Chính sách Trả hàng và Hoàn tiền Shopee

@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-seller-shipping-fulfillment-policy"
-title: "Chính sách Vận chuyển Shopee"
-source_url: "https://help.shopee.vn/portal/4/article/77250"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "seller"
-category: "order-fulfillment"
-language: "vi"
+doc_id: shopee-seller-shipping-fulfillment-policy
+title: Chính sách Vận chuyển Shopee
+source_url: https://help.shopee.vn/portal/4/article/77250
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: both
+category: shipping
+language: vi
+license_or_permission: public-page
 ---
 
 # Chính sách Vận chuyển Shopee

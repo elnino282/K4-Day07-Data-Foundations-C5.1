@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-buyer-refund-timeline"
-title: "Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn"
-source_url: "https://help.shopee.vn/portal/4/article/189473"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "buyer"
-category: "refund-timeline"
-language: "vi"
+doc_id: shopee-buyer-refund-timeline
+title: Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn
+source_url: https://help.shopee.vn/portal/4/article/189473
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: buyer
+category: returns
+language: vi
+license_or_permission: public-page
 ---
 
 # Thời gian nhận tiền hoàn và cách kiểm tra tiền hoàn

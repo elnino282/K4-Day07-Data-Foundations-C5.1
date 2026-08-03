@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-seller-prohibited-restricted-products"
-title: "Chính sách Cấm/Hạn chế Sản phẩm"
-source_url: "https://help.shopee.vn/portal/4/article/77247"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "seller"
-category: "prohibited-restricted-products"
-language: "vi"
+doc_id: shopee-seller-prohibited-restricted-products
+title: Chính sách Cấm/Hạn chế Sản phẩm
+source_url: https://help.shopee.vn/portal/4/article/77247
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: seller
+category: seller-policy
+language: vi
+license_or_permission: public-page
 ---
 
 # Chính sách Cấm/Hạn chế Sản phẩm

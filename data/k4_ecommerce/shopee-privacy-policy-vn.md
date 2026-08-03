@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-privacy-policy-vn"
-title: "Chính sách Bảo mật Shopee Việt Nam"
-source_url: "https://help.shopee.vn/portal/4/article/77244"
-retrieved_at: "2026-08-03"
+doc_id: shopee-privacy-policy-vn
+title: Chính sách Bảo mật Shopee Việt Nam
+source_url: https://help.shopee.vn/portal/4/article/77244
+retrieved_at: 2026-08-03
 document_version: "6/4/2026"
-customer_role: "buyer"
-category: "privacy-policy"
-language: "vi"
+customer_role: both
+category: privacy
+language: vi
+license_or_permission: public-page
 ---
 
 # Chính sách Bảo mật Shopee Việt Nam

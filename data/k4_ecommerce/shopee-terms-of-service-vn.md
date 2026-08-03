@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-terms-of-service-vn"
-title: "Điều khoản Dịch vụ Shopee"
-source_url: "https://help.shopee.vn/portal/4/article/77243"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "both"
-category: "terms-of-service"
-language: "vi"
+doc_id: shopee-terms-of-service-vn
+title: Điều khoản Dịch vụ Shopee
+source_url: https://help.shopee.vn/portal/4/article/77243
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: both
+category: seller-policy
+language: vi
+license_or_permission: public-page
 ---
 
 # Điều khoản Dịch vụ Shopee

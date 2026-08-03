@@ -1,12 +1,13 @@
 ---
-doc_id: "shopee-buyer-payment-methods"
-title: "Các phương thức thanh toán hiện có trên Shopee"
-source_url: "https://help.shopee.vn/portal/4/article/79198"
-retrieved_at: "2026-08-03"
-document_version: "not-stated"
-customer_role: "buyer"
-category: "payment-methods"
-language: "vi"
+doc_id: shopee-buyer-payment-methods
+title: Các phương thức thanh toán hiện có trên Shopee
+source_url: https://help.shopee.vn/portal/4/article/79198
+retrieved_at: 2026-08-03
+document_version: not-stated
+customer_role: buyer
+category: payment
+language: vi
+license_or_permission: public-page
 ---
 
 # Các phương thức thanh toán hiện có trên Shopee
