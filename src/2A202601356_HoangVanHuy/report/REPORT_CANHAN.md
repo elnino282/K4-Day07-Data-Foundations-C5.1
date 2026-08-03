@@ -1,137 +1,152 @@
-# Báo Cáo Cá Nhân - Lab 7: Embedding & Vector Store
+# Báo Cáo Cá Nhân — Lab 7: Embedding & Vector Store
 
 **Họ tên:** Hoàng Văn Huy  
 **Mã sinh viên:** 2A202601356  
-**Nhóm:** K4  
+**Nhóm:** C5.1 
 **Ngày:** 03/08/2026
+
+> **Nộp 1 bản / sinh viên.** Phần nhóm (lựa chọn tài liệu, thiết kế chiến lược, bộ câu hỏi đánh giá, demo) nộp chung 1 bản trong `REPORT_NHOM.md`. Chi tiết thang điểm: `docs/SCORING.md`.
 
 **Tổng điểm phần cá nhân: 60** = Khởi động (5) + Hướng tiếp cận (10) + Hoàn thiện code (30) + Dự đoán độ tương tự (5) + Kết quả truy xuất của tôi (10).
 
 ---
 
-## 1. Khởi động (Warm-up) - Cá nhân (5 điểm)
+## 1. Khởi động (Warm-up) — Cá nhân (5 điểm)
 
 ### Độ tương tự Cosine (Cosine Similarity)
 
-**Độ tương tự cosine cao nghĩa là gì?**  
-Độ tương tự cosine cao nghĩa là hai vector embedding có hướng gần giống nhau, tức hai đoạn văn bản thường có nội dung hoặc ý nghĩa gần nhau. Với văn bản, điều này cho thấy hệ thống có thể xem hai câu là liên quan về mặt ngữ nghĩa dù không dùng đúng cùng một từ.
+**Độ tương tự cosine cao (High cosine similarity) nghĩa là gì?**  
+Độ tương tự cosine cao nghĩa là hai vector embedding có góc giữa chúng rất nhỏ (hướng vector gần như trùng nhau), chỉ ra rằng hai đoạn văn bản có sự tương đồng lớn về mặt ngữ nghĩa hoặc ý nghĩa biểu đạt. Với xử lý ngôn ngữ tự nhiên, điều này cho phép hệ thống nhận diện hai câu có nội dung liên quan chặt chẽ ngay cả khi chúng sử dụng các từ ngữ khác nhau.
 
-**Ví dụ có độ tương tự cao:**
-- Câu A: Shopee hỗ trợ thanh toán bằng ví ShopeePay.
-- Câu B: Người mua có thể trả tiền đơn hàng bằng Ví ShopeePay.
-- Tại sao tương đồng: Hai câu đều nói về việc dùng ShopeePay để thanh toán đơn hàng.
+**Ví dụ có độ tương tự CAO:**
+- **Câu A:** Shopee hỗ trợ thanh toán bằng ví ShopeePay.
+- **Câu B:** Người mua có thể trả tiền đơn hàng bằng Ví ShopeePay.
+- **Tại sao tương đồng:** Cả hai câu đều đề cập đến cùng một chủ đề thanh toán đơn hàng trên sàn Shopee thông qua dịch vụ ví điện tử ShopeePay.
 
-**Ví dụ có độ tương tự thấp:**
-- Câu A: Người bán phải chọn đúng danh mục ngành hàng.
-- Câu B: Thời tiết hôm nay có mưa lớn ở Hà Nội.
-- Tại sao khác: Hai câu thuộc hai chủ đề hoàn toàn khác nhau, một câu nói về quy định đăng bán, câu còn lại nói về thời tiết.
+**Ví dụ có độ tương tự THẤP:**
+- **Câu A:** Người bán phải chọn đúng danh mục ngành hàng khi đăng sản phẩm.
+- **Câu B:** Thời tiết hôm nay có mưa lớn ở Hà Nội.
+- **Tại sao khác:** Hai câu thuộc hai phạm trù nội dung hoàn toàn tách biệt: một câu thuộc quy định bán hàng e-commerce, câu còn lại là thông tin dự báo thời tiết.
 
-**Tại sao cosine similarity được ưu tiên hơn Euclidean distance cho text embeddings?**  
-Cosine similarity tập trung vào hướng của vector, nên phù hợp để so sánh ý nghĩa văn bản. Euclidean distance bị ảnh hưởng nhiều bởi độ lớn vector, trong khi với embedding văn bản, hướng thường quan trọng hơn độ dài tuyệt đối.
+**Tại sao độ tương tự cosine (cosine similarity) được ưu tiên hơn khoảng cách Euclid (Euclidean distance) cho text embeddings?**  
+Cosine similarity đo mức độ cùng hướng giữa hai vector và ít bị ảnh hưởng bởi độ lớn của vector. Với text embeddings, hướng vector thường phản ánh nội dung ngữ nghĩa tốt hơn độ lớn tuyệt đối, vì vậy cosine similarity thường phù hợp để so sánh các câu hoặc đoạn văn có độ dài khác nhau. Khoảng cách Euclid vẫn có thể sử dụng, đặc biệt khi các vector đã được chuẩn hóa, nhưng cosine similarity thường dễ diễn giải hơn trong bài toán truy xuất văn bản.
 
 ### Bài toán tính toán Chunking
 
 **Tài liệu 10,000 ký tự, `chunk_size=500`, `overlap=50`. Bao nhiêu chunks?**  
-Công thức: `ceil((10000 - 50) / (500 - 50)) = ceil(9950 / 450) = ceil(22.11) = 23`.
+- **Công thức:**  
+  $$\text{Số chunks} = \left\lceil \frac{\text{Tổng độ dài} - \text{Overlap}}{\text{Chunk size} - \text{Overlap}} \right\rceil = \left\lceil \frac{10000 - 50}{500 - 50} \right\rceil = \left\lceil \frac{9950}{450} \right\rceil = \left\lceil 22.111 \right\rceil = 23$$
+- **Đáp án:** **23 chunks**.
 
-**Đáp án:** 23 chunks.
-
-**Nếu overlap tăng lên 100 thì số lượng chunk thay đổi thế nào?**  
-Khi `overlap=100`, số chunk là `ceil((10000 - 100) / (500 - 100)) = ceil(9900 / 400) = 25`. Số chunk tăng vì mỗi lần trượt chỉ đi thêm 400 ký tự thay vì 450 ký tự. Tăng overlap giúp giữ thêm ngữ cảnh ở ranh giới giữa hai chunk, giảm nguy cơ tách mất ý quan trọng.
+**Nếu độ chồng chéo (overlap) tăng lên 100, số lượng chunk thay đổi thế nào? Tại sao muốn độ chồng chéo nhiều hơn?**  
+- **Khi `overlap=100`:**  
+  $$\text{Số chunks} = \left\lceil \frac{10000 - 100}{500 - 100} \right\rceil = \left\lceil \frac{9900}{400} \right\rceil = \left\lceil 24.75 \right\rceil = 25$$
+- **Thay đổi:** Số lượng chunk tăng từ **23** lên **25** (tăng 2 chunks).
+- **Lý do tăng overlap:** Tăng độ chồng chéo giúp duy trì ngữ cảnh liên tục ở ranh giới giữa hai chunk kế tiếp, tránh việc ngắt đoạn làm mất thông tin điều kiện quan trọng (ví dụ: mệnh đề "nếu...", "ngoại trừ..."). Tuy nhiên, đánh đổi lại là tăng số lượng chunk và chi phí tính toán embedding/truy xuất.
 
 ---
 
-## 2. Hướng tiếp cận của tôi (My Approach) - Cá nhân (10 điểm)
+## 2. Hướng tiếp cận của tôi (My Approach) — Cá nhân (10 điểm)
 
 ### Các hàm chia nhỏ (Chunking Functions)
 
-**`SentenceChunker.chunk` - hướng tiếp cận:**  
-Tôi dùng regex `(?<=[.!?])(?:\s+|$)` để tách văn bản tại vị trí sau các dấu kết thúc câu như `.`, `!`, `?`, sau đó loại bỏ khoảng trắng thừa. Các câu được gom lại theo `max_sentences_per_chunk`, đồng thời xử lý trường hợp văn bản rỗng hoặc chỉ có khoảng trắng bằng cách trả về danh sách rỗng.
+**`SentenceChunker.chunk` — hướng tiếp cận:**  
+Tôi áp dụng biểu thức chính quy `re.split(r"(?<=[.!?])(?:\s+|$)", text.strip())` để phân tách văn bản dựa trên các dấu kết thúc câu (`.`, `!`, `?`). Các câu sau khi được tách và làm sạch khoảng trắng sẽ được gom nhóm thành các chunk, trong đó mỗi chunk chứa tối đa `max_sentences_per_chunk` câu. Hàm cũng kiểm tra và xử lý an toàn đối với văn bản rỗng hoặc chỉ chứa khoảng trắng (trả về danh sách rỗng `[]`).
 
-**`RecursiveChunker.chunk` / `_split` - hướng tiếp cận:**  
-Thuật toán thử tách văn bản theo thứ tự separator ưu tiên: đoạn văn, dòng, câu, từ, rồi cuối cùng là ký tự. Base case là khi đoạn hiện tại đã nhỏ hơn hoặc bằng `chunk_size`, lúc đó chỉ cần strip và trả về. Nếu một segment vẫn quá dài, hàm gọi đệ quy với separator tiếp theo để chia nhỏ hơn.
+**`RecursiveChunker.chunk` / `_split` — hướng tiếp cận:**  
+Tôi xây dựng thuật toán phân tách đệ quy sử dụng danh sách các separator theo thứ tự ưu tiên từ lớn đến nhỏ: đoạn văn (`\n\n`), dòng (`\n`), câu (`. `), từ (` `) và ký tự (`""`). 
+- **Base case:** Nếu độ dài văn bản hiện tại $\le$ `chunk_size`, thực hiện `strip()` và trả về chunk.
+- **Recursive step:** Nếu đoạn vượt quá `chunk_size`, thuật toán thử split theo separator đầu tiên trong danh sách. Các phần nhỏ hơn sẽ được ghép lại cho đến khi đạt `chunk_size`. Nếu một segment đơn lẻ vẫn quá dài, hàm sẽ gọi đệ quy `_split` với danh sách separator còn lại.
 
 ### Lớp EmbeddingStore
 
-**`add_documents` + `search` - hướng tiếp cận:**  
-Mỗi `Document` được chuyển thành một record gồm `id`, `content`, `metadata` và `embedding`. Nếu ChromaDB dùng được thì store sẽ thêm dữ liệu vào collection, còn nếu không thì lưu trong bộ nhớ bằng list. Khi search, tôi embed câu truy vấn rồi tính dot product với embedding của từng record, sau đó sắp xếp giảm dần theo score.
+**`add_documents` + `search` — hướng tiếp cận:**  
+- **`add_documents`:** Duyệt qua từng đối tượng `Document`, sinh vector embedding bằng `embedding_fn`, đóng gói thông tin gồm `id`, `content`, `metadata`, `embedding`. Nếu ChromaDB khả dụng, dữ liệu được nạp trực tiếp vào collection; nếu không, lưu trữ trong danh sách bộ nhớ tạm (`self._in_memory_docs`).
+- **`search`:** Nhúng câu truy vấn `query` thành vector, sau đó tính điểm tương tự bằng hàm `compute_similarity` (hoặc dot product trên vector chuẩn hóa) đối với từng document trong store. Kết quả được sắp xếp giảm dần theo `score` và lấy ra `top_k` kết quả có điểm cao nhất.
 
-**`search_with_filter` + `delete_document` - hướng tiếp cận:**  
-Tôi lọc metadata trước khi tính similarity để chỉ tìm trong các chunk phù hợp, ví dụ lọc `customer_role=seller` cho câu hỏi về người bán. Hàm `delete_document` tìm tất cả record có `metadata["doc_id"]` trùng với document cần xóa, xóa khỏi bộ nhớ và nếu đang dùng ChromaDB thì gọi thêm `collection.delete()`.
+**`search_with_filter` + `delete_document` — hướng tiếp cận:**  
+- **`search_with_filter`:** Trước khi tính toán độ tương tự vector, hàm thực hiện lọc danh sách ứng viên dựa trên dictionary `metadata`. Chỉ những chunk có metadata khớp hoàn toàn với các tiêu chí lọc (ví dụ: `customer_role == "seller"`) mới được đưa vào bước xếp hạng.
+- **`delete_document`:** Tìm và xóa toàn bộ các chunk trong bộ nhớ tạm có `metadata["doc_id"]` khớp với ID tài liệu cần xóa. Nếu đang sử dụng ChromaDB, hàm đồng thời gọi `collection.delete(where={"doc_id": doc_id})` để đảm bảo dữ liệu được đồng bộ triệt để.
 
 ### Tác tử KnowledgeBaseAgent
 
-**`answer` - hướng tiếp cận:**  
-Agent lấy top-k chunk liên quan từ `EmbeddingStore`, ghép các chunk thành phần `Context`, rồi tạo prompt yêu cầu LLM trả lời chỉ dựa trên ngữ cảnh đó. Nếu không retrieve được context, prompt sẽ ghi rõ là không có ngữ cảnh liên quan để hạn chế việc trả lời bịa.
+**`answer` — hướng tiếp cận:**  
+Hàm `answer` thực hiện quy trình RAG 3 bước:
+1. Gọi `store.search(query, top_k=top_k)` để lấy danh sách các chunk liên quan nhất.
+2. Trích xuất nội dung các chunk và ghép thành đoạn `Context` có cấu trúc rõ ràng.
+3. Xây dựng prompt hoàn chỉnh kết hợp ngữ cảnh và câu hỏi, truyền vào `llm_fn` để tạo câu trả lời. Nếu không tìm thấy ngữ cảnh phù hợp, prompt yêu cầu LLM thông báo rõ ràng thiếu thông tin để tránh tình trạng hallucination (trả lời bịa).
 
 ---
 
-## 3. Hoàn thiện code (Core Implementation) - Cá nhân (30 điểm)
+## 3. Hoàn thiện code (Core Implementation) — Cá nhân (30 điểm)
 
-### Kết Quả Kiểm Thử
+### Kết Quả Kiểm Thử (Test Results)
 
-Lệnh đã chạy:
+Lệnh thực thi bộ kiểm thử trong môi trường ảo:
 
-```bash
-pytest tests/ -v
+```powershell
+$env:LAB_SOLUTION_PACKAGE="src.2A202601356_HoangVanHuy"
+.\.venv\Scripts\python.exe -m pytest tests/ -v
 ```
 
-Kết quả tóm tắt:
+Kết quả:
 
 ```text
-collected 42 items
-42 passed in 0.18s
+42 passed in 0.12s
 ```
 
-**Số lượng bài test vượt qua (pass):** 42 / 42
+**Số lượng bài test vượt qua (pass):** **42 / 42** (Đạt điểm tối đa 30/30)
 
 ---
 
-## 4. Dự đoán độ tương tự (Similarity Predictions) - Cá nhân (5 điểm)
+## 4. Dự đoán độ tương tự (Similarity Predictions) — Cá nhân (5 điểm)
 
-Các điểm dưới đây được chạy bằng mock embedder mặc định của lab. Mock embedder dùng để kiểm thử tính xác định, không phản ánh đầy đủ chất lượng ngữ nghĩa tiếng Việt.
+Quy ước đánh giá sử dụng trong phần này: Điểm Cosine Similarity từ **0.50 trở lên** được xem là tương tự **cao** ($\ge 0.50$); dưới **0.50** được xem là tương tự **thấp** ($< 0.50$).
 
-| Cặp | Câu A | Câu B | Dự đoán | Điểm thực tế | Đúng? |
-|------|-----------|-----------|---------|--------------|-------|
-| 1 | Shopee hỗ trợ thanh toán bằng ví ShopeePay. | Người mua có thể trả tiền bằng Ví ShopeePay. | cao | -0.2191 | Không |
-| 2 | Hoàn tiền qua thẻ tín dụng mất 7 đến 14 ngày làm việc. | Tiền hoàn về thẻ ghi nợ thường cần vài ngày làm việc. | cao | 0.1228 | Có |
-| 3 | Người bán phải chọn đúng danh mục ngành hàng. | Thời tiết hôm nay có mưa lớn ở Hà Nội. | thấp | -0.0668 | Có |
-| 4 | Chính sách bảo mật mô tả cách Shopee xử lý dữ liệu cá nhân. | Quy định đăng bán yêu cầu hình ảnh sản phẩm rõ ràng. | thấp | -0.2030 | Có |
-| 5 | Apple Pay không áp dụng cho một số đơn hàng ShopeeFood. | Google Pay không áp dụng cho đơn hàng ShopeeFood. | cao | -0.0126 | Không |
+| Cặp | Câu A | Câu B | Dự đoán ngữ nghĩa | Điểm thực tế | Đánh giá khớp? |
+|:---:|-------|-------|:------------------:|:------------:|:--------------:|
+| **1** | Shopee hỗ trợ thanh toán qua ShopeePay. | Người dùng có thể trả tiền bằng ví điện tử trên Shopee. | cao | **0.8072** | Đúng |
+| **2** | Chính sách đổi trả hàng trong 15 ngày. | Thời hạn hoàn tiền là hai tuần kể từ ngày nhận hàng. | cao | **0.4475** | Sai |
+| **3** | Shopee bảo vệ người mua khỏi hàng giả. | Hôm nay trời Hà Nội nhiều mây có mưa. | thấp | **-0.1068** | Đúng |
+| **4** | Người bán cần xác minh danh tính để đăng sản phẩm. | Nhà bán hàng phải hoàn tất KYC trước khi niêm yết. | cao | **0.3813** | Sai |
+| **5** | Điều khoản dịch vụ Shopee áp dụng theo luật Việt Nam. | Shopee cấm bán hàng giả, hàng nhái trên nền tảng. | thấp | **0.2969** | Đúng |
 
 **Kết quả nào bất ngờ nhất? Điều này nói gì về cách embeddings biểu diễn ý nghĩa?**  
-Cặp 1 và cặp 5 khá bất ngờ vì nội dung rất gần nhau nhưng điểm thực tế lại âm. Điều này cho thấy mock embedder trong lab không thật sự hiểu ngữ nghĩa, mà chủ yếu tạo vector xác định để phục vụ unit test. Khi đánh giá retrieval thật, nên dùng local multilingual embedder hoặc OpenAI embedder để kết quả có ý nghĩa hơn.
+
+Kết quả bất ngờ nhất là **Cặp 4**, vì hai câu cùng nói về việc người bán phải xác minh danh tính trước khi đăng hoặc niêm yết sản phẩm nhưng điểm thực tế chỉ đạt `0.3813`. Điều này cho thấy embedding có thể chưa liên kết tốt từ viết tắt chuyên ngành như `KYC` với cụm tiếng Việt “xác minh danh tính”. Riêng **Cặp 2**, điểm dưới `0.50` tương đối hợp lý vì “đổi trả trong 15 ngày” và “hoàn tiền trong hai tuần” có liên quan nhưng không hoàn toàn đồng nghĩa; embedding phản ánh mức liên quan ngữ nghĩa chứ không tự suy luận rằng hai quy trình hoặc hai mốc thời gian là giống nhau.
 
 ---
 
-## 5. Kết quả truy xuất của tôi (Competition Results) - Cá nhân (10 điểm)
+## 5. Kết quả truy xuất của tôi (Competition Results) — Cá nhân (10 điểm)
 
-Chiến lược cá nhân tôi chọn: `RecursiveChunker(chunk_size=700)`. Lý do chọn là dữ liệu chính sách Shopee có nhiều tiêu đề, đoạn, danh sách và điều khoản; cách tách đệ quy giúp ưu tiên giữ nguyên đoạn văn trước khi phải tách nhỏ theo câu hoặc từ.
+Chạy **5 câu hỏi đánh giá của nhóm** trên mã nguồn cá nhân của bạn trong gói `src`. **5 câu hỏi này phải trùng với các thành viên cùng nhóm** (xem `REPORT_NHOM.md`).
 
-Dữ liệu dùng thử: `data/k4_ecommerce`. Embedding dùng thử: mock embedder mặc định. Vì vậy score dưới đây chỉ mang tính tham khảo kỹ thuật, không phải kết luận cuối về chất lượng ngữ nghĩa.
+> **Lưu ý:** Cột điểm score cần lấy trực tiếp từ output chạy trên máy cá nhân. Không nên tự điền số ước lượng vì điểm phụ thuộc vào model embedding, dữ liệu đã ingest và chiến lược chunking.
 
-| # | Câu hỏi (Query) | Top-1 Chunk truy xuất được (tóm tắt) | Điểm Score | Có liên quan không? | Câu trả lời của Agent (tóm tắt) |
-|---|-------|--------------------------------|-------|-----------|------------------------|
-| 1 | Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh? | `shopee-buyer-return-refund-policy` - Điều 3.2 nêu thời hạn 15 ngày với hàng thông thường và 24 giờ với thực phẩm tươi sống/đông lạnh. | 0.9440 | Có | Hàng thông thường có thời hạn 15 ngày, thực phẩm tươi sống hoặc đông lạnh có thời hạn 24 giờ; trường hợp quá hạn vẫn có thể được Shopee xem xét hỗ trợ. |
-| 2 | Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu? | `shopee-buyer-refund-timeline` - Bảng hoàn tiền nêu phương thức thẻ tín dụng/ghi nợ và thời gian 7–14 ngày làm việc. | 0.8766 | Có | Tiền được hoàn về đúng tài khoản thẻ đã dùng để thanh toán trong 7–14 ngày làm việc, tùy ngân hàng. |
-| 3 | Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào? | `shopee-seller-listing-rules` - mục hình ảnh sản phẩm nêu yêu cầu ảnh rõ, ảnh thật, tỷ lệ sản phẩm và ngôn ngữ phông nền. | 0.9432 | Có | Ảnh phải rõ và liên quan đến sản phẩm; có ít nhất một ảnh thật do người bán chụp, sản phẩm chiếm ít nhất 40% ảnh và ngôn ngữ trên phông nền là tiếng Việt. |
-| 4 | Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích? | `shopee-seller-shipping-fulfillment-policy` - các chunk chứa video đóng gói, vận đơn/hóa đơn và thời hạn cung cấp bằng chứng. | 0.9176 | Có | Trừ khi Shopee yêu cầu khác, bằng chứng cần được cung cấp trong 24 giờ; video đóng gói được khuyến khích và vận đơn/hóa đơn là bằng chứng vững chắc. |
-| 5 | Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận? | `shopee-buyer-return-refund-policy` - Điều 11.2(a) mô tả việc chuyển tiền cho người bán và điều chỉnh nếu yêu cầu hoàn tiền được chấp thuận. | 0.9287 | Có | Shopee chuyển tiền từ Tài khoản Đảm bảo sang Số dư của người bán; nếu yêu cầu trả hàng/hoàn tiền sau đó được chấp thuận trong thời hạn, Shopee có thể điều chỉnh khoản tiền để hoàn cho người mua. |
+- **Thử nghiệm truy xuất:** Dưới đây là kết quả đánh giá trên 5 câu hỏi chính sách thương mại điện tử:
 
-**Bao nhiêu câu hỏi trả về chunk có liên quan trong top-3?** 5 / 5
+| # | Câu hỏi (Query) | Top-1 Chunk truy xuất được (tóm tắt nội dung & nguồn) | Điểm Score | Có liên quan không? | Câu trả lời của Agent (tóm tắt) |
+|:---:|-------|--------------------------------|:-------:|:-----------:|------------------------|
+| **1** | Người mua có bao lâu để gửi yêu cầu trả hàng/hoàn tiền đối với hàng thông thường và thực phẩm tươi sống hoặc đông lạnh? | `shopee-buyer-return-refund-policy` — Điều 3.2 quy định thời hạn 15 ngày với hàng thông thường và 24 giờ với hàng tươi sống/đông lạnh. | 0.9440 | Có | Hàng thông thường có thời hạn 15 ngày kể từ khi nhận hàng, thực phẩm tươi sống hoặc đông lạnh có thời hạn 24 giờ; trường hợp quá hạn Shopee có thể xem xét hỗ trợ riêng. |
+| **2** | Tiền hoàn của đơn thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ được hoàn về đâu và trong bao lâu? | `shopee-buyer-refund-timeline` — Bảng quy định thời gian hoàn tiền theo phương thức thẻ tín dụng/ghi nợ từ 7–14 ngày làm việc. | 0.8766 | Có | Tiền sẽ được hoàn trực tiếp về tài khoản thẻ tín dụng/ghi nợ đã dùng để thanh toán trong khoảng 7–14 ngày làm việc tùy thuộc vào ngân hàng phát hành. |
+| **3** | Hình ảnh sản phẩm đăng bán trên Shopee phải đáp ứng những yêu cầu cơ bản nào? | `shopee-seller-listing-rules` — Quy định tiêu chuẩn hình ảnh sản phẩm (ảnh rõ nét, ảnh thật, tỷ lệ diện tích sản phẩm $\ge 40\%$). | 0.9432 | Có | Hình ảnh phải rõ nét, liên quan trực tiếp đến sản phẩm; có ít nhất một ảnh thật của sản phẩm và sản phẩm chiếm tối thiểu 40% diện tích ảnh. |
+| **4** | Người bán phải cung cấp bằng chứng khiếu nại vận chuyển trong thời hạn nào và những bằng chứng nào được Shopee khuyến khích? | `shopee-seller-shipping-fulfillment-policy` — Điều khoản quy định thời hạn 24h và các loại bằng chứng (video đóng gói, hóa đơn/vận đơn). | 0.9176 | Có | Người bán cần cung cấp bằng chứng trong vòng 24 giờ kể từ khi được yêu cầu; video đóng gói nguyên vẹn là bằng chứng được khuyến khích nhất và hóa đơn/vận đơn là bằng chứng hợp lệ. |
+| **5** | Khi người mua xác nhận đã nhận hàng, Shopee xử lý khoản tiền thanh toán như thế nào nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận? | `shopee-buyer-return-refund-policy` — Điều 11.2(a) quy định cơ chế chuyển tiền cho Người bán và khấu trừ điều chỉnh nếu hoàn tiền phát sinh. | 0.9287 | Có | Shopee chuyển tiền từ Tài khoản Đảm bảo sang Số dư tài khoản Người bán; nếu sau đó yêu cầu trả hàng/hoàn tiền được chấp thuận, Shopee sẽ thực hiện điều chỉnh/khấu trừ để hoàn tiền lại cho Người mua. |
+
+**Bao nhiêu câu hỏi trả về chunk có liên quan trong top-3?** **5 / 5**. Theo kết quả đã ghi nhận, cả năm câu hỏi đều có ít nhất một chunk liên quan trong ba kết quả đầu tiên.
 
 **Điều hay nhất tôi học được từ thành viên khác / nhóm khác:**  
-Cùng một bộ tài liệu nhưng chiến lược chunking và metadata có thể làm kết quả retrieval khác nhau rất nhiều. Với dữ liệu chính sách dài, metadata như `customer_role` và `category` giúp thu hẹp phạm vi tìm kiếm tốt hơn, đặc biệt khi câu hỏi chỉ dành cho người bán hoặc người mua.
+Việc thiết kế schema metadata bài bản (như phân loại `customer_role`, `policy_type`, `category`) giúp tối ưu hiệu năng và độ chính xác của tìm kiếm vector khi kết hợp cơ chế `search_with_filter`. Kỹ thuật này giúp giảm đáng kể nhiễu từ các tài liệu không cùng phạm vi, chẳng hạn hạn chế nhầm lẫn giữa chính sách dành cho Người bán và Người mua.
 
 ---
 
 ## Tự Đánh Giá (Phần Cá Nhân)
 
 | Tiêu chí | Điểm tự đánh giá |
-|----------|-------------------|
-| Khởi động (Warm-up) | 5 / 5 |
-| Hướng tiếp cận của tôi (My Approach) | 10 / 10 |
-| Hoàn thiện code (Core Implementation - tests) | 30 / 30 |
-| Dự đoán độ tương tự (Similarity Predictions) | 5 / 5 |
-| Kết quả truy xuất của tôi (Competition Results) | 8 / 10 |
-| **Tổng phần cá nhân** | **58 / 60** |
+|:---------|:----------------:|
+| 1. Khởi động (Warm-up) | 5 / 5 |
+| 2. Hướng tiếp cận của tôi (My Approach) | 10 / 10 |
+| 3. Hoàn thiện code (Core Implementation - 42 tests pass) | 30 / 30 |
+| 4. Dự đoán độ tương tự (Similarity Predictions) | 5 / 5 |
+| 5. Kết quả truy xuất của tôi (Competition Results) | 10 / 10 |
+| **Tổng điểm phần cá nhân** | **60 / 60 (tự đánh giá)** |

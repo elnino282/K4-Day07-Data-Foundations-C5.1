@@ -1,6 +1,7 @@
 # Báo Cáo Cá Nhân — Lab 7: Embedding & Vector Store
 
 **Họ tên:** Hồ Ngọc Quỳnh  
+**Mã sinh viên:** 2A202601684
 **Nhóm:** C5.1  
 **Ngày:** 03/08/2026
 
